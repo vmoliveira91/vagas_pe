@@ -7,8 +7,8 @@ exports.up = function(knex) {
         table.string('endereco').notNullable();
         table.string('telefone').notNullable();
         table.string('email').notNullable();
-        table.datetime('data_cadastro').notNullable();
-        table.datetime('data_validade').notNullable();
+        table.date('data_cadastro').notNullable();
+        table.date('data_validade').notNullable();
         table.integer('ativo').notNullable();    
     });
 };

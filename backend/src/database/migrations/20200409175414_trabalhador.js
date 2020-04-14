@@ -9,9 +9,9 @@ exports.up = function(knex) {
         table.string('telefone').notNullable();
         table.string('email').notNullable();
         table.string('sexo').notNullable();
-        table.datetime('data_nascimento').notNullable();
-        table.datetime('data_cadastro').notNullable();
-        table.datetime('data_validade').notNullable();
+        table.date('data_nascimento').notNullable();
+        table.date('data_cadastro').notNullable();
+        table.date('data_validade').notNullable();
         table.string('status').notNullable();
         table.integer('ativo').notNullable();
     });

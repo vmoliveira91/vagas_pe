@@ -5,9 +5,9 @@ exports.up = function(knex) {
         table.integer('habilidade_id').notNullable();
         table.integer('nivel_id').notNullable();
         table.integer('ativo').notNullable();
-        table.foreign('trabalhador_id').references('trabalhador.id');
-        table.foreign('habilidade_id').references('habilidade.id');
-        table.foreign('nivel_id').references('nivel.id');
+        table.foreign('trabalhador_id').references('id').inTable('trabalhador');
+        table.foreign('habilidade_id').references('id').inTable('habilidade');
+        table.foreign('nivel_id').references('id').inTable('nivel');
     });
 };
 

@@ -5,8 +5,8 @@ exports.up = function(knex) {
         table.integer('beneficio_id').notNullable();
         table.string('valor').notNullable();
         table.integer('ativo').notNullable();
-        table.foreign('vaga_id').references('vaga.id');
-        table.foreign('beneficio_id').references('beneficio.id');
+        table.foreign('vaga_id').references('id').inTable('vaga');
+        table.foreign('beneficio_id').references('id').inTable('beneficio');
     });
 };
 
