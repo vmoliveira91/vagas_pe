@@ -21,6 +21,9 @@ export default function MenuPrincipal() {
                   <select className="form-control" id="buscarDependente">
                     <option>SELECIONE PARA INICIAR</option>
                     <option>Trabalhador</option>
+                    <option>Experiência</option>
+                    <option>Habilidade</option>
+                    <option>Usuário</option>
                   </select>
                 </div>
 
