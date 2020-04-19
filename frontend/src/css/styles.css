@@ -1,0 +1,201 @@
+@import url("https://fonts.googleapis.com/css?family=Numans");
+
+html,
+body {
+  background-image: url("../images/back.jpg");
+  background-attachment: fixed;
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100%;
+  font-family: "Numans", sans-serif;
+  background-color: #eeeeee;
+}
+
+.container {
+  height: 100%;
+  align-content: center;
+}
+
+.central {
+  width: 400px;
+  margin: 50px auto;
+}
+
+.centralLogin {
+  width: 300px;
+  margin: 50px auto;
+}
+
+input:focus {
+  outline: 0 0 0 0 !important;
+  box-shadow: 0 0 0 0 !important;
+}
+
+.remember {
+  color: white;
+}
+
+.remember input {
+  width: 20px;
+  height: 20px;
+  margin-left: 15px;
+  margin-right: 5px;
+}
+
+.links a {
+  margin-left: 4px;
+}
+
+table {
+  background-color: white;
+  width: 100%;
+  padding: 2px;
+  text-align: center;
+  height: 30px;
+}
+
+table,
+th,
+td {
+  border: 1px solid black;
+}
+
+th,
+td {
+  padding: 2px 10px;
+}
+
+.shadow-suape-dois {
+  text-shadow: 2px 2px 15px #333333, 0 0 10px #333333;
+}
+
+.shadow-suape-dois {
+  color: white;
+}
+
+.pad-pequeno {
+  padding-top: 100px;
+  height: 250px;
+}
+
+.my-border-bottom {
+  -webkit-box-shadow: 0px 0px 5px rgba(50, 50, 50, 0.77);
+  -moz-box-shadow: 0px 0px 5px rgba(50, 50, 50, 0.77);
+  box-shadow: 0px 0px 5px rgba(50, 50, 50, 0.77);
+}
+
+.border-1 {
+  border: 1px solid #cccccc;
+  padding: 20px;
+}
+
+.meu-padrao {
+  width: 100%;
+  padding-bottom: 30px;
+}
+
+.suape-banner-um {
+  background-image: url("../images/banner/banner-um.jpg");
+}
+
+@media (max-width: 700px) {
+  .suape-banner-um {
+    background-image: url("../images/banner/mobile/banner-um.jpg");
+  }
+}
+
+.suape-banner-dois {
+  background-image: url("../images/banner/banner-dois.jpg");
+}
+
+@media (max-width: 700px) {
+  .suape-banner-dois {
+    background-image: url("../images/banner/mobile/banner-dois.jpg");
+  }
+}
+
+.suape-banner-tres {
+  background-image: url("../images/banner/banner-tres.jpg");
+}
+
+@media (max-width: 700px) {
+  .suape-banner-tres {
+    background-image: url("../images/banner/mobile/banner-tres.jpg");
+  }
+}
+
+.suape-banner-quatro {
+  background-image: url("../images/banner/banner-quatro.png");
+}
+
+@media (max-width: 700px) {
+  .suape-banner-quatro {
+    background-image: url("../images/banner/mobile/banner-quatro.jpg");
+  }
+}
+
+.suape-banner-cinco {
+  background-image: url("../images/banner/banner-cinco.jpg");
+}
+
+@media (max-width: 700px) {
+  .suape-banner-cinco {
+    background-image: url("../images/banner/mobile/banner-cinco.jpg");
+  }
+}
+
+.suape-banner-seis {
+  background-image: url("../images/banner/banner-seis.jpg");
+}
+
+@media (max-width: 700px) {
+  .suape-banner-seis {
+    background-image: url("../images/banner/mobile/banner-seis.jpg");
+  }
+}
+
+.suape-banner-sete {
+  background-image: url("../images/banner/banner-sete.png");
+}
+
+@media (max-width: 700px) {
+  .suape-banner-sete {
+    background-image: url("../images/banner/mobile/banner-sete.jpg");
+  }
+}
+
+.suape-banner-oito {
+  background-image: url("../images/banner/banner-oito.jpg");
+}
+
+@media (max-width: 700px) {
+  .suape-banner-oito {
+    background-image: url("../images/banner/mobile/banner-oito.jpg");
+  }
+}
+
+.suape-banner-nove {
+  background-image: url("../images/banner/banner-nove.jpg");
+}
+
+@media (max-width: 700px) {
+  .suape-banner-nove {
+    background-image: url("../images/banner/mobile/banner-nove.jpg");
+  }
+}
+
+.suape-banner-dez {
+  background-image: url("../images/banner/banner-dez.jpg");
+}
+
+@media (max-width: 700px) {
+  .suape-banner-dez {
+    background-image: url("../images/banner/mobile/banner-dez.jpg");
+  }
+}
+
+/* ADICIONADO POR NICHOLAS*/
+.table-overflow {
+  max-height: 220px;
+  overflow-y: auto;
+}
