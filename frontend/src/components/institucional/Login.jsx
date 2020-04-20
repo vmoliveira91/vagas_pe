@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 
-import api from '../../services/api';
+import api from "../../services/api";
 
 import Header from "./Header";
 import Rodape from "./Rodape";
@@ -13,25 +13,25 @@ export default function Login() {
 
   async function handleSignUp(e) {
     e.preventDefault();
-    console.log('here');
+    
     let obj = {
       login: username,
-      senha: password
-    }
+      senha: password,
+    };
 
     try {
-      const response = await api.post('/logar_usuario', obj);
+      const response = await api.post("/logar_usuario", obj);
 
-      localStorage.setItem('loginTipo', response.data.tipo);
-    
-      if(response.data.tipo != -1) {
-        history.push('/intranet');
+      localStorage.setItem("loginTipo", response.data.tipo);
+
+      if (response.data.tipo != -1) {
+        history.push("/intranet");
       } else {
-        alert('Dados inválidos');
+        alert("Dados inválidos");
       }
-    } catch(error) {
+    } catch (error) {
       alert(error);
-    }    
+    }
   }
 
   return (
@@ -68,7 +68,9 @@ export default function Login() {
                 </div>
 
                 <div className="form-group col-md-12">
-                  <button type="submit" className="btn col-md-12 btn-primary">Entrar</button>
+                  <button type="submit" className="btn col-md-12 btn-primary">
+                    Entrar
+                  </button>
                 </div>
                 <div className="form-group col-lg-12 clearfix">
                   <label className="pull-left checkbox-inline">

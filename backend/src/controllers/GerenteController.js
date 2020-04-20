@@ -72,7 +72,7 @@ module.exports = {
     },
 
     async listar_habilidades(request, response){
-        const { habilidade, ativo } = request.body;
+        const { habilidade, ativo } = request.params;
         let habilidades = [];
 
         try{
@@ -80,8 +80,8 @@ module.exports = {
             if(habilidade != null){
                 habilidades = await connection('habilidade')
                     .select('*')
-                    .where('descricao','=',habilidade.descricao)
-                    .orWhere('descricao', 'like', '%' + habilidade.descricao + '%'); 
+                    .where('descricao','=',habilidade)
+                    .orWhere('descricao', 'like', '%' + habilidade + '%'); 
             }else if (habilidade == null && ativo){
                 habilidades = await connection('habilidade')
                     .select('*')

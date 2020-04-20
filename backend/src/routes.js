@@ -46,7 +46,7 @@ routes.post('/desativar_beneficio', CaptadorController.desativar_beneficio);
 
 // GerenteController's Routes
 // GETs
-routes.get('/listar_habilidade', GerenteController.listar_habilidades);
+routes.get('/listar_habilidade/:habilidade/:ativo', GerenteController.listar_habilidades);
 routes.get('/listar_experiencia', GerenteController.listar_experiencias);
 routes.get('/listar_nivel', GerenteController.listar_niveis);
 routes.get('/listar_tempo', GerenteController.listar_tempos);
