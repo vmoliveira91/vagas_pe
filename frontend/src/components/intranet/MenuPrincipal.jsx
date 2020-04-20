@@ -24,6 +24,7 @@ export default function MenuPrincipal() {
                                         <select
                                             className="form-control"
                                             onChange={(e) => setSelecionar(e.target.value)}
+                                            required
                                         >
                                             <option value="">SELECIONE PARA INICIAR</option>
                                             <option value="trabalhador">Trabalhador</option>
@@ -34,12 +35,13 @@ export default function MenuPrincipal() {
                                     </div>
 
                                     <div className="form-group col-md-6">
-                                        <a                                            
+                                        <Link                                            
                                             className="btn col-md-12 btn-secondary"
-                                            href={"cadastrar-" + selecionar} 
+                                            to={"cadastrar-" + selecionar} 
                                         >
                                             Cadastrar
-                                        </a>
+                                        </Link>
+
                                        
                                     </div>
                                     <div className="form-group col-md-6">
