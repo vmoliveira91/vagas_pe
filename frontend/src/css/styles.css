@@ -94,6 +94,10 @@ td {
   padding-bottom: 30px;
 }
 
+.teste-img {
+    background-image: url("../images/empregoavista.png");
+}
+
 .suape-banner-um {
   background-image: url("../images/banner/banner-um.jpg");
 }
