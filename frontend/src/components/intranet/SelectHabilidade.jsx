@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function CadastroHabilidade({ submitHandler }) {
+export default function SelectHabilidade({ submitHandler }) {
   let _nome, _nivel;
 
   const handleSubmit = (e) => {

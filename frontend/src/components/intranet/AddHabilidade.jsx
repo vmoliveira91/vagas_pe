@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 
-import CadastroHabilidade from "./CadastroHabilidade";
+import SelectHabilidade from "./SelectHabilidade";
 
-export default function Habilidade() {
+export default function AddHabilidade() {
   const [habilidades, setHabilidades] = useState([]);    
 
   async function handleSubmit(e, { nome, nivel }) {
@@ -14,8 +14,6 @@ export default function Habilidade() {
     };
 
     setHabilidades(habilidades => [...habilidades, novaHabilidade]);
-
-    alert(habilidades.habNome, habilidades.habNivel);
   }
   
     return (
@@ -23,7 +21,7 @@ export default function Habilidade() {
         <div className="d-flex justify-content-center h-100">
           <div>
             <div className="central">
-              <CadastroHabilidade submitHandler={handleSubmit} />
+              <SelectHabilidade submitHandler={handleSubmit} />
 
               <div className="table-overflow">
                 <table className="table table-hover">

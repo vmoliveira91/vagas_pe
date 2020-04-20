@@ -1,7 +1,7 @@
 
 const connection = require('../database/connection');
 
-module.export = {
+module.exports = {
     async cadastrar_empregador(request, response) {
         const { cnpj, nome_fantasia, razao_social, endereco, email, telefone } = request.body;
         const data_cadastro = new Date();
@@ -90,7 +90,7 @@ module.export = {
     },
 
     async listar_empregadores(request, response){
-        const { empregador, ativo} = request.body;
+        const { empregador, ativo} = request.params;
         let empregadores = [];
 
         try{
@@ -98,8 +98,8 @@ module.export = {
             if(empregador != null){
                 empregadores = await connection('empregador')
                 .select('*')
-                .where('nome_fantasia','=',empregador.nome_fantasia)
-                .orWhere('nome_fantasia', 'like', '%' + empregador.nome_fantasia + '%'); 
+                .where('nome_fantasia','=',empregador)
+                .orWhere('nome_fantasia', 'like', '%' + empregador + '%'); 
             }else if (empregador == null && ativo){
                 empregadores = await connection('empregador')
                 .select('*')
@@ -174,6 +174,7 @@ module.export = {
 
     async desativar_funcao(request, response){
         const { id } = request.body;
+
         try{
             // Checando se a funcao está ativa
             const ativo_resposta = await connection('funcao')
@@ -206,7 +207,7 @@ module.export = {
     },
 
     async listar_funcoes(request, response){
-        const { funcao, ativo } = request.body
+        const { funcao, ativo } = request.params
         let funcoes = [];
 
         try{
@@ -214,8 +215,8 @@ module.export = {
             if(funcao != null){
                 funcoes = await connection('funcao')
                 .select('*')
-                .where('nome','=',funcao.nome)
-                .orWhere('nome', 'like', '%' + funcao.nome + '%'); 
+                .where('nome','=',funcao)
+                .orWhere('nome', 'like', '%' + funcao + '%'); 
             }else if (funcao == null && ativo){
                 funcoes = await connection('funcao')
                 .select('*')
@@ -385,6 +386,7 @@ module.export = {
             console.log(error);
         }
     },
+
     async desativar_vaga(request, response){
         const { id } = request.body;
 
@@ -425,12 +427,12 @@ module.export = {
 
         try{
             // Cadastrando uma nova função
-            const [ beneficeio_id ] = await connection('beneficio').insert({
+            const [ beneficio_id ] = await connection('beneficio').insert({
                 descricao,
                 ativo
             });
 
-            return response.json({ beneficeio_id });
+            return response.json({ beneficio_id });
 
         }catch(error){
             console.log(error);
@@ -457,6 +459,7 @@ module.export = {
 
     async desativar_beneficio(request, response){
         const { id } = request.body;
+
         try{
             // Checando se a funcao está ativa
             const ativo_resposta = await connection('beneficio')
@@ -489,7 +492,7 @@ module.export = {
     },
 
     async listar_beneficios(request, response){
-        const { beneficio, ativo } = request.body;
+        const { beneficio, ativo } = request.params;
         let beneficios = [];
 
         try{
@@ -497,8 +500,8 @@ module.export = {
             if(beneficio != null){
                 beneficios = await connection('beneficio')
                     .select('*')
-                    .where('descricao','=',beneficio.descricao)
-                    .orWhere('descricao', 'like', '%' + benefico.descricao + '%'); 
+                    .where('descricao','=',beneficio)
+                    .orWhere('descricao', 'like', '%' + beneficio + '%'); 
             }else if (beneficio == null && ativo){
                 beneficios = await connection('beneficio')
                     .select('*')
@@ -520,7 +523,7 @@ module.export = {
 
             return response.json({ beneficios })
             
-        }catch(error){
+        } catch(error){
             console.log(error);
         }
     }

@@ -9,6 +9,8 @@ import Login from "./components/institucional/Login";
 import Trabalhador from "./components/intranet/Trabalhador";
 import MenuPrincipal from "./components/intranet/MenuPrincipal";
 
+import ListarHabilidades from "./components/intranet/ListarHabilidades";
+
 export default function Routes() {
   return (
     <BrowserRouter>
@@ -19,6 +21,8 @@ export default function Routes() {
         <Route exact path="/login" component={Login} />
         <Route path="/intranet" component={MenuPrincipal} />        
         <Route path="/cadastro-de-trabalhador" component={Trabalhador} />
+
+        <Route path="/listar" component={ListarHabilidades} />
       </Switch>
     </BrowserRouter>
   );
