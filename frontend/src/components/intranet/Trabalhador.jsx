@@ -23,7 +23,7 @@ export default function Trabalhador() {
 
   return (
     <div className="central">
-      <div className="d-flex justify-content-center h-100">
+          <div className="d-flex justify-content-center h-100">
         <div>
           <form onSubmit={handleTrabalhador}>
             <div className="form-row">
