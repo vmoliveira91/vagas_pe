@@ -1,7 +1,7 @@
 
 const connection = require('../database/connection');
 
-module.export = {
+module.exports = {
     async cadastrar_empregador(request, response) {
         const { cnpj, nome_fantasia, razao_social, endereco, email, telefone } = request.body;
         const data_cadastro = new Date();
@@ -174,6 +174,7 @@ module.export = {
 
     async desativar_funcao(request, response){
         const { id } = request.body;
+
         try{
             // Checando se a funcao está ativa
             const ativo_resposta = await connection('funcao')
@@ -385,6 +386,7 @@ module.export = {
             console.log(error);
         }
     },
+
     async desativar_vaga(request, response){
         const { id } = request.body;
 
@@ -425,12 +427,12 @@ module.export = {
 
         try{
             // Cadastrando uma nova função
-            const [ beneficeio_id ] = await connection('beneficio').insert({
+            const [ beneficio_id ] = await connection('beneficio').insert({
                 descricao,
                 ativo
             });
 
-            return response.json({ beneficeio_id });
+            return response.json({ beneficio_id });
 
         }catch(error){
             console.log(error);
@@ -457,6 +459,7 @@ module.export = {
 
     async desativar_beneficio(request, response){
         const { id } = request.body;
+
         try{
             // Checando se a funcao está ativa
             const ativo_resposta = await connection('beneficio')
@@ -520,7 +523,7 @@ module.export = {
 
             return response.json({ beneficios })
             
-        }catch(error){
+        } catch(error){
             console.log(error);
         }
     }
