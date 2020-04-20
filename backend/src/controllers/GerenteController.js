@@ -179,7 +179,7 @@ module.exports = {
     },
 
     async listar_experiencias(request, response){
-        const { experiencia, ativo } = request.body;
+        const { experiencia, ativo } = request.params;
         let experiencias = [];
 
         try{
@@ -187,8 +187,8 @@ module.exports = {
             if(experiencia != null){
                 experiencias = await connection('experiencia')
                     .select('*')
-                    .where('descricao','=',experiencia.descricao)
-                    .orWhere('descricao', 'like', '%' + experiencia.descricao + '%'); 
+                    .where('descricao','=',experiencia)
+                    .orWhere('descricao', 'like', '%' + experiencia + '%'); 
             }else if (experiencia == null && ativo){
                 experiencias = await connection('experiencia')
                     .select('*')
@@ -286,7 +286,7 @@ module.exports = {
     },
 
     async listar_niveis(request, response){
-        const { nivel, ativo } = request.body;
+        const { nivel, ativo } = request.params;
         let niveis = [];
 
         try{
@@ -294,8 +294,8 @@ module.exports = {
             if(nivel != null){
                 niveis = await connection('nivel')
                     .select('*')
-                    .where('descricao','=',nivel.descricao)
-                    .orWhere('descricao', 'like', '%' + nivel.descricao + '%'); 
+                    .where('descricao','=',nivel)
+                    .orWhere('descricao', 'like', '%' + nivel + '%'); 
             }else if (nivel == null && ativo){
                 niveis = await connection('nivel')
                     .select('*')
@@ -393,7 +393,7 @@ module.exports = {
     },
 
     async listar_tempos(request, response){
-        const { tempo, ativo } = request.body;
+        const { tempo, ativo } = request.params;
         let tempos = [];
 
         try{
@@ -401,8 +401,8 @@ module.exports = {
             if(tempo != null){
                 tempos = await connection('tempo')
                     .select('*')
-                    .where('descricao','=', tempo.descricao)
-                    .orWhere('descricao', 'like', '%' + tempo.descricao + '%'); 
+                    .where('descricao','=', tempo)
+                    .orWhere('descricao', 'like', '%' + tempo + '%'); 
             }else if (tempo == null && ativo){
                 tempos = await connection('tempo')
                     .select('*')
@@ -500,7 +500,7 @@ module.exports = {
     },
 
     async listar_situacoes(request, response){
-        const { situacao, ativo } = request.body;
+        const { situacao, ativo } = request.params;
         let situacoes = [];
 
         try{
@@ -508,8 +508,8 @@ module.exports = {
             if(situacao != null){
                 situacoes = await connection('situacao')
                     .select('*')
-                    .where('descricao','=',situacao.descricao)
-                    .orWhere('descricao', 'like', '%' + situacao.descricao + '%'); 
+                    .where('descricao','=',situacao)
+                    .orWhere('descricao', 'like', '%' + situacao + '%'); 
             }else if (situacao == null && ativo){
                 situacoes = await connection('situacao')
                     .select('*')
@@ -566,7 +566,7 @@ module.exports = {
     },
 
     async listar_inscricoes (request, response){
-        const {ativo} = request.body;
+        const {ativo} = request.params;
         let inscricoes = [];
 
         if(ativo){

@@ -167,7 +167,7 @@ module.exports = {
     },
     
     async listar_trabalhadores(request, response) {
-        const { trabalhador, ativo } = request.body;
+        const { trabalhador, ativo } = request.params;
         let trabalhadores = [];
 
         try {
@@ -175,8 +175,8 @@ module.exports = {
             if(trabalhador != null) {
                 trabalhadores = await connection('trabalhador')
                     .select('*')
-                    .where('nome', '=', trabalhador.nome)
-                    .orWhere('nome', 'like', '%' + trabalhador.nome + '%');
+                    .where('nome', '=', trabalhador)
+                    .orWhere('nome', 'like', '%' + trabalhador + '%');
             } else if(trabalhador == null && ativo) {
                 trabalhadores = await connection('trabalhador')
                     .select('*')
@@ -258,7 +258,7 @@ module.exports = {
     },
 
     async listar_vagas(request, response) {
-        const { vaga, ativo } = request.body;
+        const { vaga, ativo } = request.params;
         let vagas = [];
 
         try {
@@ -271,8 +271,8 @@ module.exports = {
                         'e.telefone AS etelefone', 'e.data_cadastro AS edata_cadastro', 'e.data_validade AS edata_validade', 'e.ativo AS eativo')
                     .innerJoin('funcao AS f', 'v.funcao_id', 'f.id')
                     .innerJoin('empregador AS e', 'v.empregador_id', 'e.id')
-                    .where('v.descricao', '=', vaga.descricao)
-                    .orWhere('v.descricao', 'like', '%' + vaga.descricao + '%');              
+                    .where('v.descricao', '=', vaga)
+                    .orWhere('v.descricao', 'like', '%' + vaga + '%');              
             } else if(vaga == null && ativo) {
                 vagas = await connection('vaga AS v')
                     .select('v.id AS vid', 'v.descricao AS vdescricao', 'v.salario AS vsalario', 'v.data_cadastro AS vdata_cadastro', 'v.data_validade AS vdata_validade',

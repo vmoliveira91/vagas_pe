@@ -8,7 +8,7 @@ const routes = express.Router();
 
 // UsuarioController's Routes
 // GETs
-routes.get('/listar_usuarios', UsuarioController.listar_usuarios);
+routes.get('/listar_usuarios/:usuario/:ativo', UsuarioController.listar_usuarios);
 // POSTs
 routes.post('/cadastrar_usuario', UsuarioController.cadastrar_usuario);
 routes.post('/atualizar_usuario', UsuarioController.atualizar_usuario);
@@ -17,8 +17,8 @@ routes.post('/logar_usuario', UsuarioController.logar_usuario);
 
 // AgenteController's Routes
 // GETs
-routes.get('/listar_trabalhadores', AgenteController.listar_trabalhadores);
-routes.get('/listar_vagas', AgenteController.listar_vagas);
+routes.get('/listar_trabalhadores/:trabalhador/:ativo', AgenteController.listar_trabalhadores);
+routes.get('/listar_vagas/:vaga/:ativo', AgenteController.listar_vagas);
 // POSTs
 routes.post('/cadastrar_trabalhador', AgenteController.cadastrar_trabalhador);
 routes.post('/atualizar_trabalhador', AgenteController.atualizar_trabalhador);
@@ -27,9 +27,9 @@ routes.post('/efetuar_inscricao', AgenteController.efetuar_inscricao);
 
 // CaptadorController's Routes
 // GETs
-routes.get('/listar_empregadores', CaptadorController.listar_empregadores)
-routes.get('/listar_funcoes', CaptadorController.listar_funcoes)
-routes.get('/listar_beneficios', CaptadorController.listar_beneficios)
+routes.get('/listar_empregadores/:empregador/:ativo', CaptadorController.listar_empregadores)
+routes.get('/listar_funcoes/:funcao/:ativo', CaptadorController.listar_funcoes)
+routes.get('/listar_beneficios/:beneficio/:ativo', CaptadorController.listar_beneficios)
 // POSTs
 routes.post('/cadastrar_empregador', CaptadorController.cadastrar_empregador);
 routes.post('/atualizar_empregador', CaptadorController.atualizar_empregador);
@@ -46,12 +46,12 @@ routes.post('/desativar_beneficio', CaptadorController.desativar_beneficio);
 
 // GerenteController's Routes
 // GETs
-routes.get('/listar_habilidade/:habilidade/:ativo', GerenteController.listar_habilidades);
-routes.get('/listar_experiencia', GerenteController.listar_experiencias);
-routes.get('/listar_nivel', GerenteController.listar_niveis);
-routes.get('/listar_tempo', GerenteController.listar_tempos);
-routes.get('/listar_situacao', GerenteController.listar_situacoes);
-routes.get('/listar_insricao', GerenteController.listar_inscricoes);
+routes.get('/listar_habilidades/:habilidade/:ativo', GerenteController.listar_habilidades);
+routes.get('/listar_experiencias/:experiencia/:ativo', GerenteController.listar_experiencias);
+routes.get('/listar_niveis/:nivel/:ativo', GerenteController.listar_niveis);
+routes.get('/listar_tempos/:tempo/:ativo', GerenteController.listar_tempos);
+routes.get('/listar_situacoes/:situacao/:ativo', GerenteController.listar_situacoes);
+routes.get('/listar_inscricoes/:ativo', GerenteController.listar_inscricoes);
 routes.get('/avaliar_cadastro', GerenteController.avaliar_cadastros);
 // POSTs
 routes.post('/cadastrar_habilidade', GerenteController.cadastrar_habilidade);

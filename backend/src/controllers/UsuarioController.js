@@ -94,17 +94,17 @@ module.exports = {
     },
 
     async listar_usuarios(request, response) {
-        const { usuario, ativo} = request.body;
+        const { usuario, ativo} = request.params;
         let usuarios = [];
 
         try {
             if(usuario != null) {
                 usuarios = await connection('usuario')
                     .select('*')
-                    .where('nome_usuario', '=', usuario.nome_usuario)
-                    .orWhere('nome_usuario', 'like', '%' + usuario.nome_usuario + '%')
-                    .orWhere('login', '=', usuario.login)
-                    .orWhere('login', 'like', usuario.login);
+                    .where('nome_usuario', '=', usuario)
+                    .orWhere('nome_usuario', 'like', '%' + usuario + '%')
+                    .orWhere('login', '=', usuario)
+                    .orWhere('login', 'like', usuario);
             } else if(usuario == null && ativo) {
                 usuarios = await connection('usuario')
                     .select('*')

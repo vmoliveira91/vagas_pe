@@ -90,7 +90,7 @@ module.exports = {
     },
 
     async listar_empregadores(request, response){
-        const { empregador, ativo} = request.body;
+        const { empregador, ativo} = request.params;
         let empregadores = [];
 
         try{
@@ -98,8 +98,8 @@ module.exports = {
             if(empregador != null){
                 empregadores = await connection('empregador')
                 .select('*')
-                .where('nome_fantasia','=',empregador.nome_fantasia)
-                .orWhere('nome_fantasia', 'like', '%' + empregador.nome_fantasia + '%'); 
+                .where('nome_fantasia','=',empregador)
+                .orWhere('nome_fantasia', 'like', '%' + empregador + '%'); 
             }else if (empregador == null && ativo){
                 empregadores = await connection('empregador')
                 .select('*')
@@ -207,7 +207,7 @@ module.exports = {
     },
 
     async listar_funcoes(request, response){
-        const { funcao, ativo } = request.body
+        const { funcao, ativo } = request.params
         let funcoes = [];
 
         try{
@@ -215,8 +215,8 @@ module.exports = {
             if(funcao != null){
                 funcoes = await connection('funcao')
                 .select('*')
-                .where('nome','=',funcao.nome)
-                .orWhere('nome', 'like', '%' + funcao.nome + '%'); 
+                .where('nome','=',funcao)
+                .orWhere('nome', 'like', '%' + funcao + '%'); 
             }else if (funcao == null && ativo){
                 funcoes = await connection('funcao')
                 .select('*')
@@ -492,7 +492,7 @@ module.exports = {
     },
 
     async listar_beneficios(request, response){
-        const { beneficio, ativo } = request.body;
+        const { beneficio, ativo } = request.params;
         let beneficios = [];
 
         try{
@@ -500,8 +500,8 @@ module.exports = {
             if(beneficio != null){
                 beneficios = await connection('beneficio')
                     .select('*')
-                    .where('descricao','=',beneficio.descricao)
-                    .orWhere('descricao', 'like', '%' + benefico.descricao + '%'); 
+                    .where('descricao','=',beneficio)
+                    .orWhere('descricao', 'like', '%' + beneficio + '%'); 
             }else if (beneficio == null && ativo){
                 beneficios = await connection('beneficio')
                     .select('*')
