@@ -2,20 +2,20 @@ import React, { useState } from "react";
 
 import api from "../../services/api";
 
-export default function ListarHabilidades() {
-  const [habilidades, setHabilidades] = useState([]);
-  const [habDesc, setHabDesc] = useState('');
+export default function ListarExperiencias() {
+  const [experiencias, setExperiencias] = useState([]);
+  const [expDesc, setExpDesc] = useState('');
 
-  async function handleListarHabilidades(e) {
+  async function handleListarExperiencias(e) {
     e.preventDefault();
     
     const ativo = 1;
-    let habilidade = habDesc;      
+    let experiencia = expDesc;      
 
     try {
-      const response = await api.get(`/listar_habilidades/${habilidade}/${ativo}`);
+      const response = await api.get(`/listar_experiencias/${experiencia}/${ativo}`);
       
-      setHabilidades(response.data.habilidades);
+      setExperiencias(response.data.experiencias);
     } catch (error) {
       alert(error);
     }
@@ -25,17 +25,17 @@ export default function ListarHabilidades() {
     <div className="central">
       <div className="d-flex justify-content-center h-100">
         <div>
-          <form onSubmit={handleListarHabilidades}>
+          <form onSubmit={handleListarExperiencias}>
             <div className="form-row">
-              <h2 className="form-group col-lg-12">Listagem de Habilidade</h2>
+              <h2 className="form-group col-lg-12">Listagem de Experiências</h2>
 
               <div className="form-group col-md-7">
                 <input
                   type="text"
                   className="form-control"
                   placeholder="Descrição"
-                  value={habDesc}
-                  onChange={(e) => setHabDesc(e.target.value)}
+                  value={expDesc}
+                  onChange={(e) => setExpDesc(e.target.value)}
                 />
               </div>
 
@@ -43,7 +43,7 @@ export default function ListarHabilidades() {
                 <button
                   type="submit"
                   className="btn btn-primary btn-block"
-                  id="btnListarHabilidades"
+                  id="btnListarExperiencias"
                 >
                   Buscar/Listar
                 </button>
@@ -59,11 +59,11 @@ export default function ListarHabilidades() {
                       </tr>
                     </thead>
                     <tbody>
-                      {habilidades.map((habilidade) => {
+                      {experiencias.map((experiencia) => {
                         return (
-                          <tr key={habilidade.id}>
-                            <th scope="row">{habilidade.id}</th>
-                            <td>{habilidade.descricao}</td>
+                          <tr key={experiencia.id}>
+                            <th scope="row">{experiencia.id}</th>
+                            <td>{experiencia.descricao}</td>
                           </tr>
                         );
                       })}
