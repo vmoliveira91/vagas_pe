@@ -95,12 +95,12 @@ module.exports = {
 
         try{
             // Verifica se é para listar todos os trabalhadores ou um trabalhador específico
-            if(empregador != null){
+            if(empregador != '-'){
                 empregadores = await connection('empregador')
                 .select('*')
                 .where('nome_fantasia','=',empregador)
                 .orWhere('nome_fantasia', 'like', '%' + empregador + '%'); 
-            }else if (empregador == null && ativo){
+            }else if (empregador == '-' && ativo){
                 empregadores = await connection('empregador')
                 .select('*')
                 .where('ativo', '=', 1);
@@ -212,12 +212,12 @@ module.exports = {
 
         try{
             // Verifica se é para listar todas funções ou uma função em específico
-            if(funcao != null){
+            if(funcao != '-'){
                 funcoes = await connection('funcao')
                 .select('*')
                 .where('nome','=',funcao)
                 .orWhere('nome', 'like', '%' + funcao + '%'); 
-            }else if (funcao == null && ativo){
+            }else if (funcao == '-' && ativo){
                 funcoes = await connection('funcao')
                 .select('*')
                 .where('ativo', '=', 1);
@@ -497,12 +497,12 @@ module.exports = {
 
         try{
             // Verifica se é para listar todos beneficios ou um beneficio em específico
-            if(beneficio != null){
+            if(beneficio != '-'){
                 beneficios = await connection('beneficio')
                     .select('*')
                     .where('descricao','=',beneficio)
                     .orWhere('descricao', 'like', '%' + beneficio + '%'); 
-            }else if (beneficio == null && ativo){
+            }else if (beneficio == '-' && ativo){
                 beneficios = await connection('beneficio')
                     .select('*')
                     .where('ativo', '=', 1);

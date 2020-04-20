@@ -13,6 +13,8 @@ export default function ListarHabilidades() {
     let habilidade = habDesc;      
 
     try {
+      if(habilidade == '')
+        habilidade = '-';
       const response = await api.get(`/listar_habilidades/${habilidade}/${ativo}`);
       
       setHabilidades(response.data.habilidades);

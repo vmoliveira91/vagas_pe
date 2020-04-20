@@ -172,12 +172,12 @@ module.exports = {
 
         try {
             // Verifica se é pra listar todos os trabalhadores ou um trabalhador específico
-            if(trabalhador != null) {
+            if(trabalhador != '-') {
                 trabalhadores = await connection('trabalhador')
                     .select('*')
                     .where('nome', '=', trabalhador)
                     .orWhere('nome', 'like', '%' + trabalhador + '%');
-            } else if(trabalhador == null && ativo) {
+            } else if(trabalhador == '-' && ativo) {
                 trabalhadores = await connection('trabalhador')
                     .select('*')
                     .where('ativo', '=', 1);
@@ -263,7 +263,7 @@ module.exports = {
 
         try {
             // Verifica se é pra listar todas as vagas ou uma vaga específica
-            if(vaga != null) {
+            if(vaga != '-') {
                 vagas = await connection('vaga AS v')
                     .select('v.id AS vid', 'v.descricao AS vdescricao', 'v.salario AS vsalario', 'v.data_cadastro AS vdata_cadastro', 'v.data_validade AS vdata_validade',
                         'v.funcao_id AS vfuncao_id', 'v.empregador_id AS vempregador_id', 'v.ativo AS vativo', 'f.sigla AS fsigla', 'f.nome AS fnome', 'f.ativo AS fativo',
@@ -273,7 +273,7 @@ module.exports = {
                     .innerJoin('empregador AS e', 'v.empregador_id', 'e.id')
                     .where('v.descricao', '=', vaga)
                     .orWhere('v.descricao', 'like', '%' + vaga + '%');              
-            } else if(vaga == null && ativo) {
+            } else if(vaga == '-' && ativo) {
                 vagas = await connection('vaga AS v')
                     .select('v.id AS vid', 'v.descricao AS vdescricao', 'v.salario AS vsalario', 'v.data_cadastro AS vdata_cadastro', 'v.data_validade AS vdata_validade',
                         'v.funcao_id AS vfuncao_id', 'v.empregador_id AS vempregador_id', 'v.ativo AS vativo', 'f.sigla AS fsigla', 'f.nome AS fnome', 'f.ativo AS fativo',

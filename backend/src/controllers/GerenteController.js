@@ -77,12 +77,12 @@ module.exports = {
 
         try{
             // Verifica se é para listar todas habilidades ou uma habilidade em específico
-            if(habilidade != null){
+            if(habilidade != '-'){
                 habilidades = await connection('habilidade')
                     .select('*')
                     .where('descricao','=',habilidade)
                     .orWhere('descricao', 'like', '%' + habilidade + '%'); 
-            }else if (habilidade == null && ativo){
+            }else if (habilidade == '-' && ativo){
                 habilidades = await connection('habilidade')
                     .select('*')
                     .where('ativo', '=', 1);
@@ -184,12 +184,12 @@ module.exports = {
 
         try{
             // Verifica se é para listar todas experiencias ou uma experiencia em específico
-            if(experiencia != null){
+            if(experiencia != '-'){
                 experiencias = await connection('experiencia')
                     .select('*')
                     .where('descricao','=',experiencia)
                     .orWhere('descricao', 'like', '%' + experiencia + '%'); 
-            }else if (experiencia == null && ativo){
+            }else if (experiencia == '-' && ativo){
                 experiencias = await connection('experiencia')
                     .select('*')
                     .where('ativo', '=', 1);
@@ -291,12 +291,12 @@ module.exports = {
 
         try{
             // Verifica se é para listar todos niveis ou um nivel em específico
-            if(nivel != null){
+            if(nivel != '-'){
                 niveis = await connection('nivel')
                     .select('*')
                     .where('descricao','=',nivel)
                     .orWhere('descricao', 'like', '%' + nivel + '%'); 
-            }else if (nivel == null && ativo){
+            }else if (nivel == '-' && ativo){
                 niveis = await connection('nivel')
                     .select('*')
                     .where('ativo', '=', 1);
@@ -398,12 +398,12 @@ module.exports = {
 
         try{
             // Verifica se é para listar todos tempos ou um tempo em específico
-            if(tempo != null){
+            if(tempo != '-'){
                 tempos = await connection('tempo')
                     .select('*')
                     .where('descricao','=', tempo)
                     .orWhere('descricao', 'like', '%' + tempo + '%'); 
-            }else if (tempo == null && ativo){
+            }else if (tempo == '-' && ativo){
                 tempos = await connection('tempo')
                     .select('*')
                     .where('ativo', '=', 1);
@@ -505,12 +505,12 @@ module.exports = {
 
         try{
             // Verifica se é para listar todas experiencias ou uma experiencia em específico
-            if(situacao != null){
+            if(situacao != '-'){
                 situacoes = await connection('situacao')
                     .select('*')
                     .where('descricao','=',situacao)
                     .orWhere('descricao', 'like', '%' + situacao + '%'); 
-            }else if (situacao == null && ativo){
+            }else if (situacao == '-' && ativo){
                 situacoes = await connection('situacao')
                     .select('*')
                     .where('ativo', '=', 1);
