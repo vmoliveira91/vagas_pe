@@ -10,8 +10,6 @@ export default function MenuPrincipal() {
                 <div className="central border-1">
                     <div className="d-flex justify-content-center h-100">
                         <div>
-
-                           
                             <form>
                                 <div className="form-row">
                                     <img
@@ -45,28 +43,28 @@ export default function MenuPrincipal() {
                                        
                                     </div>
                                     <div className="form-group col-md-6">
-                                        <a
+                                        <Link 
                                             className="btn col-md-12 btn-secondary"
                                             href={"atualizar-" + selecionar}                                            
                                         >
                                             Atualizar
-                                        </a>
+                                        </Link>
                                     </div>
                                     <div className="form-group col-md-6">
-                                        <a                                            
+                                        <Link                                             
                                             className="btn col-md-12 btn-secondary"
                                             href={"ativar-desativar-" + selecionar} 
                                         >
                                             Ativar/Desativar
-                                        </a>
+                                        </Link>
                                     </div>
                                     <div className="form-group col-md-6">
-                                        <a
+                                        <Link 
                                             className="btn col-md-12 btn-secondary"
                                             href={"buscar-listar-" + selecionar} 
                                         >
                                             Buscar/Listar
-                                        </a>
+                                        </Link>
                                     </div>
                                 </div>
                                 
@@ -76,15 +74,15 @@ export default function MenuPrincipal() {
                 </div>
                 <div className="central border-1" style={{ marginTop: "-30px" }}>
                     <div className="form-group col-md-12">
-                        <a href="/nova-inscricao" className="btn col-md-12 btn-primary">
-                            Realizar Inscrição
-          </a>
+                        <Link href="/nova-inscricao" className="btn col-md-12 btn-primary">
+                        Realizar Inscrição
+                        </Link>
                     </div>
 
                     <div className="form-group col-md-12">
-                        <a href="/atualizar-incricao" className="btn col-md-12 btn-primary">
+                        <Link href="/atualizar-incricao" className="btn col-md-12 btn-primary">
                             Atualizar Inscrição
-          </a>
+                        </Link>
                        
                     </div>
                 </div>
