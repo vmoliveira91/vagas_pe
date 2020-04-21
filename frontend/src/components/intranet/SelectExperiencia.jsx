@@ -1,13 +1,43 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import api from '../../services/api';
 
 export default function SelectExperiencia({ submitHandler }) {
-  let _nome, _nivel;
+  const [experiencias, setExperiencias] = useState([]);
+  const [tempos, setTempos] = useState([]);
+
+  let _experiencia, _tempo;
+
+  async function get_experiencias_tempos() {
+    let ativo = 1;
+
+    try {
+      let response = await api.get(`/listar_experiencias/${'-'}/${ativo}`);
+      response.data.experiencias.unshift({id: 0, descricao: 'Selecionar uma experiência'});
+      setExperiencias(response.data.experiencias);     
+
+      response = await api.get(`/listar_tempos/${'-'}/${ativo}`);
+      response.data.tempos.unshift({id: 0, descricao: 'Selecionar um tempo'});
+      setTempos(response.data.tempos);
+    } catch(error) {
+      alert(error);
+    }
+  }
+
+  useEffect(() => {
+    get_experiencias_tempos();
+  }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     submitHandler(e, {
-      nome: _nome.value,
-      nivel: _nivel.value,
+      experiencia: {
+        id: _experiencia.value,
+        descricao: experiencias[_experiencia.value].descricao
+      },
+      tempo: {
+        id: _tempo.value,
+        descricao: tempos[_tempo.value].descricao
+      }
     });
   };
 
@@ -18,19 +48,18 @@ export default function SelectExperiencia({ submitHandler }) {
           <h2 className="form-group col-lg-12">Experiência</h2>
 
           <div className="form-group col-md-6">
-            <select className="form-control" ref={(select) => (_nome = select)}>
-              <option value="E1">Expêriencia 1</option>
-              <option value="E2">Expêriencia 2</option>
+            <select className="form-control" ref={(select) => (_experiencia = select)}>
+              {experiencias.map((experiencia) => {
+                return <option value={experiencia.id}>{experiencia.descricao}</option>
+              })}
             </select>
           </div>
 
           <div className="form-group col-md-4">
-            <select
-              className="form-control"
-              ref={(select) => (_nivel = select)}
-            >
-              <option value="N1">Nível 1</option>
-              <option value="N2">Nível 2</option>
+            <select className="form-control" ref={(select) => (_tempo = select)}>
+              {tempos.map((tempo) => {
+                return <option value={tempo.id}>{tempo.descricao}</option>
+              })}
             </select>
           </div>
 

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 
 import Endereco from "./Endereco";
 import AddHabilidade from "./AddHabilidade";
+import AddExperiencia from './AddExperiencia';
 
 export default function Trabalhador() {
   const [nome, setNome] = useState("");
@@ -167,6 +168,7 @@ export default function Trabalhador() {
             </div>
           </form>
           <AddHabilidade />
+          <AddExperiencia />
         </div>
       </div>
     </div>

@@ -5,15 +5,21 @@ import SelectHabilidade from "./SelectHabilidade";
 export default function AddHabilidade() {
   const [habilidades, setHabilidades] = useState([]);    
 
-  async function handleSubmit(e, { nome, nivel }) {
+  async function handleSubmit(e, { habilidade, nivel }) {
     e.preventDefault();
-    
-    var novaHabilidade = {
-      habNome: nome,
-      habNivel: nivel,
-    };
 
-    setHabilidades(habilidades => [...habilidades, novaHabilidade]);
+    if(habilidade.id == 0 || nivel.id == 0)
+      alert('Favor selecionar uma habilidade ou nível');
+    else {
+      var novaHabilidade = {
+        habilidade_id: habilidade.id,
+        habilidade_descricao: habilidade.descricao,
+        nivel_id: nivel.id,
+        nivel_descricao: nivel.descricao
+      };
+  
+      setHabilidades(habilidades => [...habilidades, novaHabilidade]);
+    }    
   }
   
     return (
@@ -36,13 +42,10 @@ export default function AddHabilidade() {
                     {habilidades.map((habilidade, index) => {
                       return (
                         <tr key={index}>
-                          <th scope="row">{habilidade.habNome}</th>
-                          <td>{habilidade.habNivel}</td>
+                          <th scope="row">{habilidade.habilidade_descricao}</th>
+                          <td>{habilidade.nivel_descricao}</td>
                           <td>
-                            <button
-                              type="button"
-                              className="btn btn-secondary btn-block"
-                            >
+                            <button type="button" className="btn btn-secondary btn-block">
                               -
                             </button>
                           </td>

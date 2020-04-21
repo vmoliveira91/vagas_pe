@@ -5,17 +5,21 @@ import SelectExperiencia from "./SelectExperiencia";
 export default function AddExperiencia() {
   const [experiencias, setExperiencias] = useState([]);    
 
-  async function handleSubmit(e, { nome, nivel }) {
+  async function handleSubmit(e, { experiencia, tempo }) {
     e.preventDefault();
     
-    var novaExperiencia = {
-      expNome: nome,
-      expNivel: nivel,
-    };
+    if(experiencia.id == 0 || tempo.id == 0) {
+      alert('Favor selecionar uma experiência e/ou tempo!');
+    } else {
+      var novaExperiencia = {
+        experiencia_id: experiencia.id,
+        experiencia_descricao: experiencia.descricao,
+        tempo_id: tempo.id,
+        tempo_descricao: tempo.descricao
+      };
 
-    setExperiencias(experiencias => [...experiencias, novaExperiencia]);
-
-    alert(experiencias.expNome, experiencias.expNivel);
+      setExperiencias(experiencias => [...experiencias, novaExperiencia]);
+    }
   }
   
     return (
@@ -38,13 +42,10 @@ export default function AddExperiencia() {
                     {experiencias.map((experiencia, index) => {
                       return (
                         <tr key={index}>
-                          <th scope="row">{experiencia.expNome}</th>
-                          <td>{experiencia.expNivel}</td>
+                          <th scope="row">{experiencia.experiencia_descricao}</th>
+                          <td>{experiencia.tempo_descricao}</td>
                           <td>
-                            <button
-                              type="button"
-                              className="btn btn-secondary btn-block"
-                            >
+                            <button type="button" className="btn btn-secondary btn-block">
                               -
                             </button>
                           </td>
