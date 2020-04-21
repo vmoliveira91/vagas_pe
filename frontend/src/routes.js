@@ -16,7 +16,11 @@ import AddHabilidade from "./components/intranet/AddHabilidade";
 import CadastrarHabilidade from "./components/intranet/CadastrarHabilidade";
 import CadastrarExperiencia from "./components/intranet/CadastrarExperiencia";
 import ListarExperiencias from "./components/intranet/ListarExperiencias";
+import ListarUsuarios from "./components/intranet/ListarUsuarios";
 import SelectHabilidade from "./components/intranet/SelectHabilidade";
+import CadastrarUsuario from "./components/intranet/CadastrarUsuario";
+import AtualizarHabilidade from "./components/intranet/AtualizarHabilidade";
+import AtualizarUsuario from "./components/intranet/AtualizarUsuario";
 
 export default function Routes() {
   return (
@@ -30,11 +34,11 @@ export default function Routes() {
         <Route path="/cadastrar-trabalhador" component={Trabalhador} />
         <Route path="/cadastrar-habilidade" component={CadastrarHabilidade} />
         <Route path="/cadastrar-experiencia" component={CadastrarExperiencia} />
-        <Route path="/cadastrar-usuario" component={EmConstrucao} />
+        <Route path="/cadastrar-usuario" component={CadastrarUsuario} />
         <Route path="/atualizar-trabalhador" component={EmConstrucao} />
-        <Route path="/atualizar-habilidade" component={EmConstrucao} />
+        <Route path="/atualizar-habilidade" component={AtualizarHabilidade} />
         <Route path="/atualizar-experiencia" component={EmConstrucao} />
-        <Route path="/atualizar-usuario" component={EmConstrucao} />
+        <Route path="/atualizar-usuario" component={AtualizarUsuario} />
         <Route path="/ativar-desativar-trabalhador" component={EmConstrucao} />
         <Route path="/ativar-desativar-habilidade" component={EmConstrucao} />
         <Route path="/ativar-desativar-experiencia" component={EmConstrucao} />
@@ -42,7 +46,7 @@ export default function Routes() {
         <Route path="/buscar-listar-trabalhador" component={EmConstrucao} />
         <Route path="/buscar-listar-habilidade" component={ListarHabilidades} />
         <Route path="/buscar-listar-experiencia" component={ListarExperiencias} />
-        <Route path="/buscar-listar-usuario" component={EmConstrucao} />
+        <Route path="/buscar-listar-usuario" component={ListarUsuarios} />
         <Route exact path="/cadastrar-" component={MenuPrincipal} /> 
         <Route exact path="/atualizar-" component={MenuPrincipal} /> 
         <Route exact path="/ativar-desativar-" component={MenuPrincipal} /> 

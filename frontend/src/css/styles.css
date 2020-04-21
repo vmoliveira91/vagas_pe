@@ -65,6 +65,10 @@ td {
   padding: 2px 10px;
 }
 
+.index-superior {
+    z-index: 2;
+}
+
 .shadow-suape-dois {
   text-shadow: 2px 2px 15px #333333, 0 0 10px #333333;
 }
@@ -76,6 +80,11 @@ td {
 .pad-pequeno {
   padding-top: 100px;
   height: 250px;
+}
+
+.banner-pequeno {
+    padding-top: 30px;
+    height: 100px;
 }
 
 .my-border-bottom {
@@ -158,12 +167,12 @@ td {
   }
 }
 
-.suape-banner-sete {
-  background-image: url("../images/banner/banner-sete.png");
+.banner-sete {
+  background-image: url("../images/banner/banner-sete.jpg");
 }
 
 @media (max-width: 700px) {
-  .suape-banner-sete {
+  .banner-sete {
     background-image: url("../images/banner/mobile/banner-sete.jpg");
   }
 }

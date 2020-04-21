@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 export default function Header() {
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-light text-uppercase font-weight-bold my-border-bottom">
+      <nav className="navbar index-superior navbar-expand-lg navbar-light bg-light text-uppercase font-weight-bold my-border-bottom">
       <div className="container">
         <button
           className="navbar-toggler"
