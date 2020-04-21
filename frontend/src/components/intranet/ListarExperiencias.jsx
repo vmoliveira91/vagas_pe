@@ -4,17 +4,20 @@ import api from "../../services/api";
 
 export default function ListarExperiencias() {
   const [experiencias, setExperiencias] = useState([]);
-  const [expDesc, setExpDesc] = useState('');
+  const [expDesc, setExpDesc] = useState("");
 
   async function handleListarExperiencias(e) {
     e.preventDefault();
-    
+
     const ativo = 1;
-    let experiencia = expDesc;      
+    let experiencia = expDesc;
 
     try {
-      const response = await api.get(`/listar_experiencias/${experiencia}/${ativo}`);
-      
+      if (experiencia == "") experiencia = "-";
+      const response = await api.get(
+        `/listar_experiencias/${experiencia}/${ativo}`
+      );
+
       setExperiencias(response.data.experiencias);
     } catch (error) {
       alert(error);

@@ -45,7 +45,7 @@ export default function MenuPrincipal() {
                                     <div className="form-group col-md-6">
                                         <Link 
                                             className="btn col-md-12 btn-secondary"
-                                            href={"atualizar-" + selecionar}                                            
+                                            to={"atualizar-" + selecionar}                                            
                                         >
                                             Atualizar
                                         </Link>
@@ -53,7 +53,7 @@ export default function MenuPrincipal() {
                                     <div className="form-group col-md-6">
                                         <Link                                             
                                             className="btn col-md-12 btn-secondary"
-                                            href={"ativar-desativar-" + selecionar} 
+                                            to={"ativar-desativar-" + selecionar} 
                                         >
                                             Ativar/Desativar
                                         </Link>
@@ -61,7 +61,7 @@ export default function MenuPrincipal() {
                                     <div className="form-group col-md-6">
                                         <Link 
                                             className="btn col-md-12 btn-secondary"
-                                            href={"buscar-listar-" + selecionar} 
+                                            to={"buscar-listar-" + selecionar} 
                                         >
                                             Buscar/Listar
                                         </Link>
@@ -74,13 +74,13 @@ export default function MenuPrincipal() {
                 </div>
                 <div className="central border-1" style={{ marginTop: "-30px" }}>
                     <div className="form-group col-md-12">
-                        <Link href="/nova-inscricao" className="btn col-md-12 btn-primary">
+                        <Link to="/nova-inscricao" className="btn col-md-12 btn-primary">
                         Realizar Inscrição
                         </Link>
                     </div>
 
                     <div className="form-group col-md-12">
-                        <Link href="/atualizar-incricao" className="btn col-md-12 btn-primary">
+                        <Link to="/atualizar-incricao" className="btn col-md-12 btn-primary">
                             Atualizar Inscrição
                         </Link>
                        
