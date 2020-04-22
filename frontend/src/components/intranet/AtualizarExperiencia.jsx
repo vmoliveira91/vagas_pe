@@ -14,7 +14,7 @@ export default function AtualizarHabilidade({ exp }) {
     };
 
     try {
-      api.post("/atualizar_experiencia", obj);
+      await api.post("/atualizar_experiencia", obj);
 
       alert("Experiência atualizada com sucesso!");
     } catch (error) {
@@ -25,8 +25,12 @@ export default function AtualizarHabilidade({ exp }) {
   async function handleDesativar(e) {
     e.preventDefault();
 
+    let obj = {
+      id: exp.id,
+    }
+
     try {
-        api.post("/desativar_experiencia", exp.id);
+        await api.post("/desativar_experiencia", obj);
 
         alert("Experiência desativada com sucesso!");
       } catch (error) {
@@ -67,7 +71,7 @@ export default function AtualizarHabilidade({ exp }) {
             id="btDesativar"
             onClick={handleDesativar}
           >
-            Desativar
+            Ativar/Desativar
           </button>
         </div>
       </div>

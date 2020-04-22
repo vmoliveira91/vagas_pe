@@ -7,7 +7,7 @@ export default function ListarExperiencias() {
   const [experiencias, setExperiencias] = useState([]);
   const [expDesc, setExpDesc] = useState("");
 
-  const [obj, setObj] = useState([]);
+  const [obj, setObj] = useState({});
 
   async function handleListarExperiencias(e) {
     e.preventDefault();
@@ -98,9 +98,7 @@ export default function ListarExperiencias() {
           </form>
 
           <div className="collapse" id="collapseExperiencia">
-            <div className="card card-body">
-              <AtualizarExperiencia exp={obj} />
-            </div>
+            <AtualizarExperiencia exp={obj} />
           </div>
         </div>
       </div>

@@ -14,7 +14,7 @@ export default function AtualizarHabilidade({ hab }) {
     };
 
     try {
-      api.post("/atualizar_habilidade", obj);
+      await api.post("/atualizar_habilidade", obj);
 
       alert("Habilidade atualizada com sucesso!");
     } catch (error) {
@@ -25,8 +25,12 @@ export default function AtualizarHabilidade({ hab }) {
   async function handleDesativar(e) {
     e.preventDefault();
 
+    let obj = {
+      id: hab.id,
+    }
+
     try {
-      api.post("/desativar_habilidade", hab.id);
+      await api.post("/desativar_habilidade", obj);
 
       alert("Habilidade desativada com sucesso!");
     } catch (error) {
@@ -35,7 +39,7 @@ export default function AtualizarHabilidade({ hab }) {
   }
 
   return (
-    <div className="rounded">
+    <div>
       <p className="border-bottom">{hab.id}. {hab.desc}</p>
       <div className="form-row">
         <div className="form-group col-md-8">
@@ -67,7 +71,7 @@ export default function AtualizarHabilidade({ hab }) {
             id="btDesativar"
             onClick={handleDesativar}
           >
-            Desativar
+            Ativar/Desativar
           </button>
         </div>
       </div>

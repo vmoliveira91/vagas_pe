@@ -6,10 +6,8 @@ import AtualizarUsuario from "./AtualizarUsuario";
 export default function ListarUsuarios() {
   const [usuarios, setUsuarios] = useState([]);
   const [login, setLogin] = useState("");
-  const [nomeUsuario, setNomeUsuario] = useState("");
-  const [tipo, setTipo] = useState("");
-  const [ativo, setAtivo] = useState("");
-  let _id, _login, _nome_usuario, _tipo, _ativo ;
+
+  const [obj, setObj] = useState({});
 
   async function handleListarUsuarios(e) {
     e.preventDefault();
@@ -19,9 +17,7 @@ export default function ListarUsuarios() {
 
     try {
       if (usuario == "") usuario = "-";
-      const response = await api.get(
-        `/listar_usuarios/${usuario}/${ativo}`
-      );
+      const response = await api.get(`/listar_usuarios/${usuario}/${ativo}`);
 
       setUsuarios(response.data.usuarios);
     } catch (error) {
@@ -33,9 +29,9 @@ export default function ListarUsuarios() {
     <div className="central">
       <div className="d-flex justify-content-center h-100">
         <div>
-            <form onSubmit={handleListarUsuarios}>
+          <form onSubmit={handleListarUsuarios}>
             <div className="form-row">
-              <h2 className="form-group col-lg-12">Listagem de Usuarios</h2>
+              <h2 className="form-group col-lg-12">Listagem de Usuários</h2>
 
               <div className="form-group col-md-7">
                 <input
@@ -64,64 +60,37 @@ export default function ListarUsuarios() {
                       <tr>
                         <th scope="col">ID</th>
                         <th scope="col">Login</th>
-                        <th scope="col">Nome Usuário</th>
+                        <th scope="col">Nome</th>
                         <th scope="col">Tipo</th>
-                        <th scope="col">Ativo</th>
                         <th scope="col"></th>
                       </tr>
                     </thead>
                     <tbody>
-                      {usuarios.map((usuario) => {
+                      {usuarios.map((usuario, index) => {
                         return (
-                          <tr key={usuario.id}>
+                          <tr key={index}>
                             <th scope="row">{usuario.id}</th>
                             <td>{usuario.login}</td>
                             <td>{usuario.nome_usuario}</td>
                             <td>{usuario.tipo}</td>
-                            <td>{usuario.ativo}</td>
                             <td>
                               <div>
                                 <button
                                   type="button"
                                   className="btn btn-secondary btn-block"
-                                  data-toggle="modal"
-                                  data-target="#atualizarHab"
+                                  onClick={() =>
+                                    setObj({
+                                      id: usuario.id,
+                                      nome: usuario.nome_usuario,
+                                      tipo: usuario.tipo,
+                                      ativo: usuario.ativo,
+                                    })
+                                  }
+                                  data-toggle="collapse"
+                                  data-target="#collapseUsuario"
                                 >
                                   Atualizar
                                 </button>
-
-                                <div
-                                  className="modal fade"
-                                  id="atualizarHab"
-                                  tabIndex="-1"
-                                  role="dialog"
-                                >
-                                  <div className="modal-dialog" role="document">
-                                    <div className="modal-content">
-                                      <div className="modal-header">
-                                        <h5
-                                          className="modal-title"
-                                          id="atualizarHab"
-                                        >
-                                          Atualizar Habilidade
-                                        </h5>
-                                        <button
-                                          type="button"
-                                          className="close"
-                                          data-dismiss="modal"
-                                        >
-                                          &times;
-                                        </button>
-                                      </div>
-                                      <div className="modal-body">
-                                        <AtualizarUsuario
-                                          id={_id}
-                                          descricao={_login}
-                                        />
-                                      </div>
-                                    </div>
-                                  </div>
-                                </div>
                               </div>
                             </td>
                           </tr>
@@ -133,6 +102,10 @@ export default function ListarUsuarios() {
               </div>
             </div>
           </form>
+
+          <div className="collapse" id="collapseUsuario">
+            <AtualizarUsuario user={obj} />
+          </div>
         </div>
       </div>
     </div>

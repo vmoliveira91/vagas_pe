@@ -7,7 +7,7 @@ export default function ListarHabilidades() {
   const [habilidades, setHabilidades] = useState([]);
   const [habDesc, setHabDesc] = useState("");
 
-  const [obj, setObj] = useState([]);
+  const [obj, setObj] = useState({});
 
   async function handleListarHabilidades(e) {
     e.preventDefault();
@@ -98,9 +98,7 @@ export default function ListarHabilidades() {
           </form>
 
           <div className="collapse" id="collapseHabilidade">
-            <div className="card card-body">
-              <AtualizarHabilidade hab={obj} />
-            </div>
+            <AtualizarHabilidade hab={obj} />
           </div>
         </div>
       </div>
