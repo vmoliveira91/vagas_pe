@@ -3,6 +3,8 @@ import CarrouselUm from "../../images/banner/banner-cinco.jpg"
 import CarrouselDois from "../../images/banner/banner-dois.jpg"
 import CarrouselTres from "../../images/banner/banner-quatro.jpg"
 import NoticiasUm from "../../images/noticias/empregoavista.png"
+import NoticiasDois from "../../images/noticias/covid.jpg"
+import NoticiasTres from "../../images/noticias/economia.jpg"
 import Header from "./Header";
 import Rodape from "./Rodape";
 
@@ -71,7 +73,7 @@ export default function Home() {
               <div className="col-12 pt-3 row justify-content-center mb-5">
                  
                   <div className="col-md-3 card m-1 p-3" style={{ width: "18rem" }}>
-                      <img className="card-img-top" src={NoticiasUm} alt="Imagem de capa do card" />
+                      <img className="card-img-top" src={NoticiasTres} alt="Imagem de capa do card" />
                       <div className="card-body">
                           <h5 className="card-title">Ministério da Economia</h5>
                           <p className="card-text">Ministério da Economia avalia impactos do Projeto de Lei 873/2020.</p>
@@ -93,7 +95,7 @@ export default function Home() {
 
               
                   <div className="col-md-3 card m-1 p-3" style={{ width: "18rem" }}>
-                      <img className="card-img-top" src={NoticiasUm} alt="Imagem de capa do card" />
+                      <img className="card-img-top" src={NoticiasDois} alt="Imagem de capa do card" />
                       <div className="card-body">
                           <h5 className="card-title">COVID-19</h5>
                           <p className="card-text">Inspeção do Trabalho na Bahia notifica estabelecimentos sobre...</p>
