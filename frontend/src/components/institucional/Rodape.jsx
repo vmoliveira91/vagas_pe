@@ -62,7 +62,7 @@ export default function Rodape() {
                     <script>
                       document.write(new Date().getFullYear());
                     </script>{" "}
-                    Desenvolvido por Vagabundos
+                    Desenvolvido por Alunos Unibratec
                   </small>
                 </p>
               </div>
