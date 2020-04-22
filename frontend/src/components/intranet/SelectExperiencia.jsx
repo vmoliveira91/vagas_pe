@@ -12,11 +12,11 @@ export default function SelectExperiencia({ submitHandler }) {
 
     try {
       let response = await api.get(`/listar_experiencias/${'-'}/${ativo}`);
-      response.data.experiencias.unshift({id: 0, descricao: 'Selecionar uma experiência'});
+      response.data.experiencias.unshift({id: 0, descricao: 'Experiência'});
       setExperiencias(response.data.experiencias);     
 
       response = await api.get(`/listar_tempos/${'-'}/${ativo}`);
-      response.data.tempos.unshift({id: 0, descricao: 'Selecionar um tempo'});
+      response.data.tempos.unshift({id: 0, descricao: 'Tempo'});
       setTempos(response.data.tempos);
     } catch(error) {
       alert(error);
@@ -42,10 +42,10 @@ export default function SelectExperiencia({ submitHandler }) {
   };
 
   return (
-    <div>
+      <div className="row col-md-12">
       <form onSubmit={handleSubmit}>
-        <div className="form-row">
-          <h2 className="form-group col-lg-12">Experiência</h2>
+              <div className="form-row">
+                  <p className="form-group mt-5 col-md-12" style={{ fontWeight: "bold", fontSize: "12pt"}}>Selecionar Experiência</p>
 
           <div className="form-group col-md-6">
             <select className="form-control" ref={(select) => (_experiencia = select)}>
@@ -63,7 +63,7 @@ export default function SelectExperiencia({ submitHandler }) {
             </select>
           </div>
 
-          <div className="form-group col-sm-2">
+          <div className="form-group col-md-2">
             <button type="submit" className="btn btn-primary btn-block">
               +
             </button>

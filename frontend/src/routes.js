@@ -7,7 +7,7 @@ import Home from "./components/institucional/Home";
 import EmConstrucao from "./components/institucional/EmConstrucao";
 
 import Login from "./components/institucional/Login";
-import Trabalhador from "./components/intranet/Trabalhador";
+import CadastrarTrabalhador from "./components/intranet/CadastrarTrabalhador";
 import MenuPrincipal from "./components/intranet/MenuPrincipal";
 
 import ListarHabilidades from "./components/intranet/ListarHabilidades";
@@ -31,7 +31,7 @@ export default function Routes() {
         <Route exact path="/contato" component={Contato} />
         <Route exact path="/login" component={Login} />
         <Route path="/intranet" component={MenuPrincipal} />        
-        <Route path="/cadastrar-trabalhador" component={Trabalhador} />
+        <Route path="/cadastrar-trabalhador" component={CadastrarTrabalhador} />
         <Route path="/cadastrar-habilidade" component={CadastrarHabilidade} />
         <Route path="/cadastrar-experiencia" component={CadastrarExperiencia} />
         <Route path="/cadastrar-usuario" component={CadastrarUsuario} />

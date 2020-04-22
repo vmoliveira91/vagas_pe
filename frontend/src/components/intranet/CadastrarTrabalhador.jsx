@@ -64,135 +64,139 @@ export default function Trabalhador() {
   }
 
   return (
-    <div className="justify-content-center align-items-center p-5 mt-5">
+      <div>
+      <div className="justify-content-center align-items-center p-5 ">
       <div className="d-flex justify-content-center h-100">
-        <div className="row">
-          <div className="col-sm-4">
-            <form onSubmit={handleTrabalhador}>
-              <div className="form-row">
-                <h2 className="form-group col-lg-12">Cadastro de Trabalhador</h2>
+              <div className="row col-lg-12">
+                  <div className="row col-md-4">
+                  <form onSubmit={handleTrabalhador}>
+                      
+                          <div className="form-row">
+                    <h2 className="form-group">Cadastro de Trabalhador</h2>
 
-                <div className="form-group col-lg-12">
-                  <input
-                    type="text"
-                    className="form-control"
-                    placeholder="Nome"
-                    required="required"
-                    value={nome}
-                    onChange={(e) => setNome(e.target.value)}
-                  />
+                    <div className="form-group col-md-12">
+                      <input
+                        type="text"
+                        className="form-control"
+                        placeholder="Nome"
+                        required="required"
+                        value={nome}
+                        onChange={(e) => setNome(e.target.value)}
+                      />
+                    </div>
+
+                    <div className="form-group col-md-12">
+                      <input
+                        type="text"
+                        className="form-control"
+                        placeholder="E-mail"
+                        required="required"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                      />
+                    </div>
+
+                    <div className="form-group col-md-6">
+                      <input
+                        type="text"
+                        className="form-control"
+                        placeholder="RG"
+                        required="required"
+                        value={rg}
+                        onChange={(e) => setRg(e.target.value)}
+                      />
+                    </div>
+
+                    <div className="form-group col-md-6">
+                      <input
+                        type="text"
+                        className="form-control"
+                        placeholder="CPF"
+                        required="required"
+                        value={cpf}
+                        onChange={(e) => setCpf(e.target.value)}
+                      />
+                    </div>
+
+                    <div className="form-group col-md-6">
+                      <input
+                        type="date"
+                        className="form-control"
+                        placeholder="Nome"
+                        required="required"
+                        valu={nascimento}
+                        onChange={(e) => setNascimento(e.target.value)}
+                      />
+                    </div>
+
+                    <div className="form-group col-md-6">
+                      <input
+                        type="text"
+                        className="form-control"
+                        placeholder="Telefone"
+                        required="required"
+                        value={telefone}
+                        onChange={(e) => setTelefone(e.target.value)}
+                      />
+                    </div>
+
+                    <div className="form-group col-md-6">
+                      <input
+                        type="text"
+                        className="form-control"
+                        placeholder="Sexo"
+                        required="required"
+                        value={sexo}
+                        onChange={(e) => setSexo(e.target.value)}
+                      />
+                    </div>
+
+                    <div className="form-group col-md-6">
+                      <input
+                        type="text"
+                        className="form-control"
+                        placeholder="Nacionalidade"
+                        required="required"
+                        value={nacionalidade}
+                        onChange={(e) => setNacionalidade(e.target.value)}
+                      />
+                    </div>
+
+                    <div className="form-group col-md-12">
+                      <input
+                        type="text"
+                        className="form-control"
+                        placeholder="Endereço"
+                        required="required"
+                        value={endereco}
+                        onChange={(e) => setEndereco(e.target.value)}
+                      />
+                    </div>                           
+
+                    <div className="form-group col-md-12">
+                      <button
+                        type="submit"
+                        className="btn btn-primary btn-block"
+                        id="btnTrabalhador"
+                      >
+                        Cadastrar
+                      </button>
+                    </div>
+                      </div>
+                    </form>
+                  </div>  
+                  <div className="row col-md-8">
+                      <div className="col-md-6">
+                        <AddExperiencia experiencias={experiencias} onAdd={handleAddExperiencia} onRemove={handleRemoveExperiencia}/>
+                    </div>
+
+                    <div className="col-md-6">
+                        <AddHabilidade habilidades={habilidades} onAdd={handleAddHabilidade} onRemove={handleRemoveHabilidade}/>
+                    </div>
                 </div>
-
-                <div className="form-group col-lg-12">
-                  <input
-                    type="text"
-                    className="form-control"
-                    placeholder="E-mail"
-                    required="required"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                  />
-                </div>
-
-                <div className="form-group col-md-6">
-                  <input
-                    type="text"
-                    className="form-control"
-                    placeholder="RG"
-                    required="required"
-                    value={rg}
-                    onChange={(e) => setRg(e.target.value)}
-                  />
-                </div>
-
-                <div className="form-group col-md-6">
-                  <input
-                    type="text"
-                    className="form-control"
-                    placeholder="CPF"
-                    required="required"
-                    value={cpf}
-                    onChange={(e) => setCpf(e.target.value)}
-                  />
-                </div>
-
-                <div className="form-group col-lg-6">
-                  <input
-                    type="date"
-                    className="form-control"
-                    placeholder="Nome"
-                    required="required"
-                    valu={nascimento}
-                    onChange={(e) => setNascimento(e.target.value)}
-                  />
-                </div>
-
-                <div className="form-group col-lg-6">
-                  <input
-                    type="text"
-                    className="form-control"
-                    placeholder="Telefone"
-                    required="required"
-                    value={telefone}
-                    onChange={(e) => setTelefone(e.target.value)}
-                  />
-                </div>
-
-                <div className="form-group col-md-6">
-                  <input
-                    type="text"
-                    className="form-control"
-                    placeholder="Sexo"
-                    required="required"
-                    value={sexo}
-                    onChange={(e) => setSexo(e.target.value)}
-                  />
-                </div>
-
-                <div className="form-group col-md-6">
-                  <input
-                    type="text"
-                    className="form-control"
-                    placeholder="Nacionalidade"
-                    required="required"
-                    value={nacionalidade}
-                    onChange={(e) => setNacionalidade(e.target.value)}
-                  />
-                </div>
-
-                <div className="form-group col-md-12">
-                  <input
-                    type="text"
-                    className="form-control"
-                    placeholder="Endereço"
-                    required="required"
-                    value={endereco}
-                    onChange={(e) => setEndereco(e.target.value)}
-                  />
-                </div>                           
-
-                <div className="form-group col-lg-12">
-                  <button
-                    type="submit"
-                    className="btn btn-primary btn-block"
-                    id="btnTrabalhador"
-                  >
-                    Cadastrar
-                  </button>
-                </div>
-              </div>
-            </form>
-          </div>
-
-          <div className="col-sm-4">
-            <AddExperiencia experiencias={experiencias} onAdd={handleAddExperiencia} onRemove={handleRemoveExperiencia}/>
-          </div>
-
-          <div className="col-sm-4">
-            <AddHabilidade habilidades={habilidades} onAdd={handleAddHabilidade} onRemove={handleRemoveHabilidade}/>
-          </div>
         </div>
       </div>
+    </div>
     </div>
   );
 }

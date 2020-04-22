@@ -31,19 +31,19 @@ export default function AddHabilidade(props) {
   }
   
     return (
-      <div className="central">
+      <div>
         <div className="d-flex justify-content-center h-100">
           <div>
-            <div className="central">
+            <div className="row justify-content-center">
               <SelectHabilidade submitHandler={handleSubmit} />
 
-              <div className="table-overflow">
-                <table className="table table-hover">
+              <div className="row col-md-12 table-overflow">
+                <table className="table">
                   <thead>
                     <tr>
-                      <th scope="col">Habilidade</th>
-                      <th scope="col">Nível</th>
-                      <th scope="col"></th>
+                    <th className="tab-titulo" scope="col">Habilidade</th>
+                    <th className="tab-titulo" scope="col">Nível</th>
+                    <th className="tab-titulo" scope="col"></th>
                     </tr>
                   </thead>
                   <tbody>

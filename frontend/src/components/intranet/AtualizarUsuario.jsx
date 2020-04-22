@@ -95,26 +95,28 @@ export default function AtualizarUsuario({ user }) {
           />
         </div>
 
-        <div className="form-group col-lg-12">
-          <button
-            type="button"
-            className="btn btn-primary btn-block"
-            id="btAtualizar"
-            onClick={handleAtualizarUsuario}
-          >
-            Enviar
-          </button>
+        <div className="form-check col-lg-4 pt-1 bg-white" style={{width: "100%", border: "1px solid #dddddd", borderRadius: "5px" }}>
+            <label
+                for="exampleCheck1"
+            >
+                Ativo
+            </label>
+            <input
+                className="ml-1"
+                type="checkbox"
+                id="exampleCheck1"
+            />           
         </div>
 
         <div className="form-group col-lg-12">
-          <button
+            <button
             type="button"
-            className="btn btn-primary btn-block"
-            id="btDesativar"
-            onClick={handleDesativar}
-          >
-            Ativar/Desativar
-          </button>
+            className="btn btn-primary btn-block mt-3"
+            id="btAtualizar"
+            onClick={handleAtualizarUsuario}
+            >
+            Enviar
+            </button>
         </div>
       </div>
     </div>

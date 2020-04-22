@@ -46,23 +46,15 @@ input:focus {
   margin-left: 4px;
 }
 
-table {
-  background-color: white;
-  width: 100%;
-  padding: 2px;
-  text-align: center;
-  height: 30px;
-}
 
 table,
 th,
 td {
-  border: 1px solid black;
 }
 
-th,
-td {
-  padding: 2px 10px;
+
+.tab-titulo {
+    background-color: #F5F5F5;
 }
 
 .index-superior {

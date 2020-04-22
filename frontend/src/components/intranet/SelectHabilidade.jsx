@@ -12,11 +12,11 @@ export default function SelectHabilidade({ submitHandler }) {
 
     try {
       let response = await api.get(`/listar_habilidades/${'-'}/${ativo}`);
-      response.data.habilidades.unshift({id: 0, descricao: 'Selecionar uma habilidade'});
+      response.data.habilidades.unshift({id: 0, descricao: 'Habilidade'});
       setHabilidades(response.data.habilidades);
 
       response = await api.get(`/listar_niveis/${'-'}/${ativo}`);
-      response.data.niveis.unshift({id: 0, descricao: 'Selecionar um nível'});
+      response.data.niveis.unshift({id: 0, descricao: 'Nível'});
       setNiveis(response.data.niveis);
     } catch(error) {
       alert(error);
@@ -42,10 +42,10 @@ export default function SelectHabilidade({ submitHandler }) {
   };
 
   return (
-    <div>
+    <div className="row col-md-12">
       <form onSubmit={handleSubmit}>
         <div className="form-row">
-          <h2 className="form-group col-lg-12">Habilidade</h2>
+          <p className="form-group mt-5 col-md-12" style={{ fontWeight: "bold", fontSize: "12pt"}}>Selecionar Experiência</p>
 
           <div className="form-group col-md-6">
             <select className="form-control" ref={(select) => (_habilidade = select)}>
@@ -63,7 +63,7 @@ export default function SelectHabilidade({ submitHandler }) {
             </select>
           </div>
 
-          <div className="form-group col-sm-2">
+          <div className="form-group col-md-2">
             <button type="submit" className="btn btn-primary btn-block">
               +
             </button>

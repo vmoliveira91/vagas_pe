@@ -53,7 +53,21 @@ export default function AtualizarHabilidade({ hab }) {
           />
         </div>
 
-        <div className="form-group col-sm-4">
+        <div className="form-check col-lg-3 mt-2">
+            <label
+            for="exampleCheck1"
+            >
+            Ativo
+            </label>
+            <input
+            className="ml-1"
+            type="checkbox"
+            id="exampleCheck1"
+            />           
+        </div>
+
+
+        <div className="form-group mt-3 col-sm-12">
           <button
             type="button"
             className="btn btn-primary btn-block"
@@ -61,17 +75,6 @@ export default function AtualizarHabilidade({ hab }) {
             onClick={handleNovaDesc}
           >
             Enviar
-          </button>
-        </div>
-
-        <div className="form-group col-lg-12">
-          <button
-            type="button"
-            className="btn btn-primary btn-block"
-            id="btDesativar"
-            onClick={handleDesativar}
-          >
-            Ativar/Desativar
           </button>
         </div>
       </div>
