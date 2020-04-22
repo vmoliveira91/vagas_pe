@@ -61,11 +61,11 @@ td {
     z-index: 2;
 }
 
-.shadow-suape-dois {
+.shadow-dois {
   text-shadow: 2px 2px 15px #333333, 0 0 10px #333333;
 }
 
-.shadow-suape-dois {
+.shadow-dois {
   color: white;
 }
 
@@ -99,68 +99,68 @@ td {
     background-image: url("../images/empregoavista.png");
 }
 
-.suape-banner-um {
+.banner-um {
   background-image: url("../images/banner/banner-um.jpg");
 }
 
 @media (max-width: 700px) {
-  .suape-banner-um {
+  .banner-um {
     background-image: url("../images/banner/mobile/banner-um.jpg");
   }
 }
 
-.suape-banner-dois {
+.banner-dois {
   background-image: url("../images/banner/banner-dois.jpg");
 }
 
 @media (max-width: 700px) {
-  .suape-banner-dois {
+  .banner-dois {
     background-image: url("../images/banner/mobile/banner-dois.jpg");
   }
 }
 
-.suape-banner-tres {
+.banner-tres {
   background-image: url("../images/banner/banner-tres.jpg");
 }
 
 @media (max-width: 700px) {
-  .suape-banner-tres {
+  .banner-tres {
     background-image: url("../images/banner/mobile/banner-tres.jpg");
   }
 }
 
-.suape-banner-quatro {
+.banner-quatro {
   background-image: url("../images/banner/banner-quatro.png");
 }
 
 @media (max-width: 700px) {
-  .suape-banner-quatro {
+  .banner-quatro {
     background-image: url("../images/banner/mobile/banner-quatro.jpg");
   }
 }
 
-.suape-banner-cinco {
+.banner-cinco {
   background-image: url("../images/banner/banner-cinco.jpg");
 }
 
 @media (max-width: 700px) {
-  .suape-banner-cinco {
+  .banner-cinco {
     background-image: url("../images/banner/mobile/banner-cinco.jpg");
   }
 }
 
-.suape-banner-seis {
+.banner-seis {
   background-image: url("../images/banner/banner-seis.jpg");
 }
 
 @media (max-width: 700px) {
-  .suape-banner-seis {
+  .banner-seis {
     background-image: url("../images/banner/mobile/banner-seis.jpg");
   }
 }
 
 .banner-sete {
-  background-image: url("../images/banner/banner-sete.jpg");
+  background-image: url("../images/banner/banner-sete.png");
 }
 
 @media (max-width: 700px) {
@@ -169,32 +169,32 @@ td {
   }
 }
 
-.suape-banner-oito {
+.banner-oito {
   background-image: url("../images/banner/banner-oito.jpg");
 }
 
 @media (max-width: 700px) {
-  .suape-banner-oito {
+  .banner-oito {
     background-image: url("../images/banner/mobile/banner-oito.jpg");
   }
 }
 
-.suape-banner-nove {
+.banner-nove {
   background-image: url("../images/banner/banner-nove.jpg");
 }
 
 @media (max-width: 700px) {
-  .suape-banner-nove {
+  .banner-nove {
     background-image: url("../images/banner/mobile/banner-nove.jpg");
   }
 }
 
-.suape-banner-dez {
+.banner-dez {
   background-image: url("../images/banner/banner-dez.jpg");
 }
 
 @media (max-width: 700px) {
-  .suape-banner-dez {
+  .banner-dez {
     background-image: url("../images/banner/mobile/banner-dez.jpg");
   }
 }

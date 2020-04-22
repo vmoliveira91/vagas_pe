@@ -9,11 +9,11 @@ export default function Contato() {
   return (
     <div>
       <Header />
-      <div className="pad-pequeno suape-banner-quatro">
+      <div className="pad-pequeno banner-quatro">
         <div className="container">
           <div className="row align-items-center justify-content-center text-center">
             <div className="col-md-7">
-              <h1 className="shadow-suape-dois"></h1>
+              <h1 className="suape-dois"></h1>
             </div>
           </div>
         </div>

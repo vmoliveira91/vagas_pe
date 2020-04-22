@@ -7,11 +7,11 @@ export default function QuemSomos() {
   return (
     <div>
       <Header />
-      <div className="pad-pequeno suape-banner-cinco">
+      <div className="pad-pequeno banner-sete">
         <div className="container">
           <div className="row align-items-center justify-content-center text-center">
             <div className="col-md-7">
-              <h1 className="shadow-suape-dois">QUEM SOMOS</h1>
+              <h1 className="shadow-dois">QUEM SOMOS</h1>
             </div>
           </div>
         </div>
@@ -19,7 +19,7 @@ export default function QuemSomos() {
       <div className="container">
         <div className="row justify-content-center text-center mb-5">
           <div className="col-md-8  section-heading">
-                      <h2 className="heading mb-3 p-5">Quem Somos</h2>
+                      <h2 className="heading mb-3 p-5">Uma Grande Equipe</h2>
 
                       <p>
                           O Vagas-PE surgiu em 2020 criada inicialmente por alunos da Faculdade FBV, criada inicialmente sem o
