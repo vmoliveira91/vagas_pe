@@ -35,18 +35,12 @@ export default function Routes() {
         <Route path="/cadastrar-habilidade" component={CadastrarHabilidade} />
         <Route path="/cadastrar-experiencia" component={CadastrarExperiencia} />
         <Route path="/cadastrar-usuario" component={CadastrarUsuario} />
-        <Route path="/atualizar-trabalhador" component={EmConstrucao} />
-        <Route path="/atualizar-habilidade" component={AtualizarHabilidade} />
-        <Route path="/atualizar-experiencia" component={EmConstrucao} />
-        <Route path="/atualizar-usuario" component={AtualizarUsuario} />
-        <Route path="/ativar-desativar-trabalhador" component={EmConstrucao} />
-        <Route path="/ativar-desativar-habilidade" component={EmConstrucao} />
-        <Route path="/ativar-desativar-experiencia" component={EmConstrucao} />
-        <Route path="/ativar-desativar-usuario" component={EmConstrucao} />
         <Route path="/buscar-listar-trabalhador" component={EmConstrucao} />
         <Route path="/buscar-listar-habilidade" component={ListarHabilidades} />
         <Route path="/buscar-listar-experiencia" component={ListarExperiencias} />
         <Route path="/buscar-listar-usuario" component={ListarUsuarios} />
+        <Route path="/nova-inscricao" component={EmConstrucao} />
+        <Route path="/atualizar-inscricao" component={EmConstrucao} />
         <Route exact path="/cadastrar-" component={MenuPrincipal} /> 
         <Route exact path="/atualizar-" component={MenuPrincipal} /> 
         <Route exact path="/ativar-desativar-" component={MenuPrincipal} /> 

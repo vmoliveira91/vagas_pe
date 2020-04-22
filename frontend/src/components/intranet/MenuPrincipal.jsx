@@ -42,22 +42,7 @@ export default function MenuPrincipal() {
 
                                        
                                     </div>
-                                    <div className="form-group col-md-6">
-                                        <Link 
-                                            className="btn col-md-12 btn-secondary"
-                                            to={"atualizar-" + selecionar}                                            
-                                        >
-                                            Atualizar
-                                        </Link>
-                                    </div>
-                                    <div className="form-group col-md-6">
-                                        <Link                                             
-                                            className="btn col-md-12 btn-secondary"
-                                            to={"ativar-desativar-" + selecionar} 
-                                        >
-                                            Ativar/Desativar
-                                        </Link>
-                                    </div>
+                                    
                                     <div className="form-group col-md-6">
                                         <Link 
                                             className="btn col-md-12 btn-secondary"
@@ -80,7 +65,7 @@ export default function MenuPrincipal() {
                     </div>
 
                     <div className="form-group col-md-12">
-                        <Link to="/atualizar-incricao" className="btn col-md-12 btn-primary">
+                        <Link to="/atualizar-inscricao" className="btn col-md-12 btn-primary">
                             Atualizar Inscrição
                         </Link>
                        

@@ -98,7 +98,7 @@ module.exports = {
         let usuarios = [];
 
         try {
-            if(usuario != null) {
+            if(usuario != '-') {
                 usuarios = await connection('usuario')
                     .select('*')
                     .where('nome_usuario', '=', usuario)
