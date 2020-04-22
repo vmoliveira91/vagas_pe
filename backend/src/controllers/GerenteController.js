@@ -569,16 +569,17 @@ module.exports = {
         const {ativo} = request.params;
         let inscricoes = [];
 
+        try{
         if(ativo){
             inscricoes = await connection('inscricao AS i')
             .select('i.id as iid', 'i.data_inscricao as idata_inscricao', 'i.vaga_id as ivaga_id', 'i.trabalhador_id as itrabalhador_id',
-            'i.situacao_id as isituacao_id', 's.descricao as sdescricao','i.ativo a iativo')
+            'i.situacao_id as isituacao_id', 's.descricao as sdescricao','i.ativo as iativo')
             .innerJoin('situacao as s', 'i.situacao_id','s.id')
-            .where('v.ativo','=',1)
+            .where('i.ativo','=',1)
         } else {
             inscricoes = await connection('inscricao AS i')
             .select('i.id as iid', 'i.data_inscricao as idata_inscricao', 'i.vaga_id as ivaga_id', 'i.trabalhador_id as trabalhador_id',
-            'i.situacao_id as isituacao_id', 's.descricao as sdescricao','i.ativo a iativo')
+            'i.situacao_id as isituacao_id', 's.descricao as sdescricao','i.ativo as iativo')
             .innerJoin('situacao as s', 'i.situacao_id','s.id')
         }
 
@@ -596,6 +597,10 @@ module.exports = {
         }
 
         return response.json ({ inscricoes })
+    
+        } catch (error){
+            console.log(error);
+        }
     },
 
     async avaliar_cadastros (){

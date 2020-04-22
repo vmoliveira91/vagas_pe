@@ -40,7 +40,7 @@ routes.post('/desativar_funcao', CaptadorController.desativar_funcao);
 routes.post('/cadastrar_vaga', CaptadorController.cadastrar_vaga);
 routes.post('/atualizar_vaga', CaptadorController.atualizar_vaga);
 routes.post('/desativar_vaga', CaptadorController.desativar_vaga);
-routes.post('/cadastrar_benefico', CaptadorController.cadastrar_benefico);
+routes.post('/cadastrar_beneficio', CaptadorController.cadastrar_beneficio);
 routes.post('/atualizar_beneficio', CaptadorController.atualizar_beneficio);
 routes.post('/desativar_beneficio', CaptadorController.desativar_beneficio);
 
@@ -66,7 +66,7 @@ routes.post('/desativar_nivel', GerenteController.desativar_nivel);
 routes.post('/cadastrar_tempo', GerenteController.cadastrar_tempo);
 routes.post('/atualizar_tempo', GerenteController.atualizar_tempo);
 routes.post('/desativar_tempo', GerenteController.desativar_tempo);
-routes.post('/cadastrar_', GerenteController.cadastrar_situacao);
+routes.post('/cadastrar_situacao', GerenteController.cadastrar_situacao);
 routes.post('/atualizar_situacao', GerenteController.atualizar_situacao);
 routes.post('/desativar_situacao', GerenteController.desativar_situacao);
 routes.post('/atualizar_inscricao', GerenteController.atualizar_inscricao);

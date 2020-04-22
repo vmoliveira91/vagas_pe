@@ -3,7 +3,7 @@ const connection = require('../database/connection');
 
 module.exports = {
     async cadastrar_empregador(request, response) {
-        const { cnpj, nome_fantasia, razao_social, endereco, email, telefone } = request.body;
+        const { cnpj, nomeFantasia, razaoSocial, endereco, email, telefone } = request.body;
         const data_cadastro = new Date();
         const data_validade = new Date(data_cadastro.setMonth(data_cadastro.getMonth() + 8));
         const ativo = 1;
@@ -12,8 +12,8 @@ module.exports = {
             //Cadastrando um novo empregador
             const [ empregador_id ] = await connection('empregador').insert({
                 cnpj,
-                nome_fantasia,
-                razao_social,
+                nomeFantasia,
+                razaoSocial,
                 endereco,
                 email,
                 telefone,
@@ -30,7 +30,7 @@ module.exports = {
     },
 
     async atualizar_empregador(request, response){
-        const { id,cnpj, nome_fantasia, razao_social, endereco, email, telefone } = request.body;
+        const { id,cnpj, nomeFantasia, razaoSocial, endereco, email, telefone } = request.body;
         const data_cadastro = new Date();
         const data_validade = new Date(data_cadastro.setMonth(data_cadastro.getMonth() + 8));
         const ativo = 1;
@@ -39,8 +39,8 @@ module.exports = {
             // Atualizando o empregador
             await connection('empregador').update({
                 cnpj,
-                nome_fantasia,
-                razao_social,
+                nomeFantasia,
+                razaoSocial,
                 endereco,
                 email,
                 telefone,
@@ -62,7 +62,7 @@ module.exports = {
             // Checando se o empregador está ativo
             const ativo_resposta = await connection('empregador')
                 .select('ativo')
-                .where('id','=', empregador_id);
+                .where('id','=', id);
 
             const ativo = ativo_resposta[0].ativo;
 
@@ -71,13 +71,13 @@ module.exports = {
                     await connection('empregador').update({
                         ativo: 0
                     })
-                    .where('id','=', empregador_id);
+                    .where('id','=', id);
                 } else {
                     //Se estiver desativado, ativa
                     await connection('empregador').update({
                         ativo: 1
                     })
-                    .where('id','=', empregador_id);
+                    .where('id','=', id);
                 }
 
             const is_ativo = !ativo;
@@ -98,8 +98,8 @@ module.exports = {
             if(empregador != '-'){
                 empregadores = await connection('empregador')
                 .select('*')
-                .where('nome_fantasia','=',empregador)
-                .orWhere('nome_fantasia', 'like', '%' + empregador + '%'); 
+                .where('nomeFantasia','=',empregador)
+                .orWhere('nomeFantasia', 'like', '%' + empregador + '%'); 
             }else if (empregador == '-' && ativo){
                 empregadores = await connection('empregador')
                 .select('*')
@@ -113,8 +113,8 @@ module.exports = {
                 let empregador = {
                     id : empregadores[i].id,
                     cnpj: empregadores[i].cnpj,
-                    nome_fantasia: empregadores[i].nome_fantasia,
-                    razao_social: empregadores[i].razao_social,
+                    nomeFantasia: empregadores[i].nomeFantasia,
+                    razaoSocial: empregadores[i].razaoSocial,
                     endereco: empregadores[i].endereco,
                     email: empregadores[i].email,
                     telefone: empregadores[i].telefone,
@@ -179,7 +179,7 @@ module.exports = {
             // Checando se a funcao está ativa
             const ativo_resposta = await connection('funcao')
                 .select('ativo')
-                .where('id','=', funcao_id);
+                .where('id','=', id);
 
                 const ativo = ativo_resposta[0].ativo;
 
@@ -188,13 +188,13 @@ module.exports = {
                     await connection('funcao').update({
                         ativo: 0
                     })
-                    .where('id','=', funcao);
+                    .where('id','=', id);
                 } else {
                     //Se estiver desativada, ativa
                     await connection('funcao').update({
                         ativo: 1
                     })
-                    .where('id','=', funcao_id);
+                    .where('id','=', id);
                 }
                 
                 const is_ativo = !ativo;
@@ -226,7 +226,7 @@ module.exports = {
                 .select('*');
             }
 
-            for(let i = 0; i < empregadores.length; i++) {
+            for(let i = 0; i < funcoes.length; i++) {
                 let funcao = {
                     id: funcoes[i].id,
                     sigla: funcoes[i].sigla,
@@ -316,7 +316,7 @@ module.exports = {
         const vaga_id = id;
         const data_validade = new Date(new Date().setMonth(new Date().getMonth() + 8));
         const ativo = 1
-
+        
         try{
             // Atualizando vaga
             await connection('vaga').update({
@@ -345,8 +345,9 @@ module.exports = {
                     });
                 }
             }
+            
 
-                 // Deleta as experiências já cadastradas
+            // Deleta as experiências já cadastradas
             await connection('vaga_experiencia').del()
             .where('vaga_id', '=', id);
         
@@ -421,7 +422,7 @@ module.exports = {
         }
     },
 
-    async cadastrar_benefico(request, response){
+    async cadastrar_beneficio(request, response){
         const { descricao } = request.body;
         const ativo = 1;
 
