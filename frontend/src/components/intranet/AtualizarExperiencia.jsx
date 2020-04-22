@@ -2,21 +2,21 @@ import React, { useState } from "react";
 
 import api from "../../services/api";
 
-export default function AtualizarHabilidade({ hab }) {
+export default function AtualizarHabilidade({ exp }) {
   const [novaDesc, setNovaDesc] = useState("");
 
   async function handleNovaDesc(e) {
     e.preventDefault();
 
     let obj = {
-      id: hab.id,
+      id: exp.id,
       descricao: novaDesc,
     };
 
     try {
-      api.post("/atualizar_habilidade", obj);
+      api.post("/atualizar_experiencia", obj);
 
-      alert("Habilidade atualizada com sucesso!");
+      alert("Experiência atualizada com sucesso!");
     } catch (error) {
       alert(error);
     }
@@ -26,17 +26,17 @@ export default function AtualizarHabilidade({ hab }) {
     e.preventDefault();
 
     try {
-      api.post("/desativar_habilidade", hab.id);
+        api.post("/desativar_experiencia", exp.id);
 
-      alert("Habilidade desativada com sucesso!");
-    } catch (error) {
-      alert(error);
-    }
+        alert("Experiência desativada com sucesso!");
+      } catch (error) {
+        alert(error);
+      }
   }
 
   return (
     <div className="rounded">
-      <p className="border-bottom">{hab.id}. {hab.desc}</p>
+      <p className="border-bottom">{exp.id}. {exp.desc}</p>
       <div className="form-row">
         <div className="form-group col-md-8">
           <input

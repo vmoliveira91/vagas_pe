@@ -1,10 +1,13 @@
 import React, { useState } from "react";
 
 import api from "../../services/api";
+import AtualizarExperiencia from "./AtualizarExperiencia";
 
 export default function ListarExperiencias() {
   const [experiencias, setExperiencias] = useState([]);
   const [expDesc, setExpDesc] = useState("");
+
+  const [obj, setObj] = useState([]);
 
   async function handleListarExperiencias(e) {
     e.preventDefault();
@@ -59,14 +62,31 @@ export default function ListarExperiencias() {
                       <tr>
                         <th scope="col">ID</th>
                         <th scope="col">Descrição</th>
+                        <th scope="col"></th>
                       </tr>
                     </thead>
                     <tbody>
-                      {experiencias.map((experiencia) => {
+                      {experiencias.map((experiencia, index) => {
                         return (
-                          <tr key={experiencia.id}>
+                          <tr key={index}>
                             <th scope="row">{experiencia.id}</th>
                             <td>{experiencia.descricao}</td>
+                            <td>
+                              <button
+                                type="button"
+                                className="btn btn-secondary btn-block"
+                                onClick={() =>
+                                  setObj({
+                                    id: experiencia.id,
+                                    desc: experiencia.descricao,
+                                  })
+                                }
+                                data-toggle="collapse"
+                                data-target="#collapseExperiencia"
+                              >
+                                Atualizar
+                              </button>
+                            </td>
                           </tr>
                         );
                       })}
@@ -76,6 +96,12 @@ export default function ListarExperiencias() {
               </div>
             </div>
           </form>
+
+          <div className="collapse" id="collapseExperiencia">
+            <div className="card card-body">
+              <AtualizarExperiencia exp={obj} />
+            </div>
+          </div>
         </div>
       </div>
     </div>

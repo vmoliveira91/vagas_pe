@@ -6,7 +6,8 @@ import AtualizarHabilidade from "./AtualizarHabilidade";
 export default function ListarHabilidades() {
   const [habilidades, setHabilidades] = useState([]);
   const [habDesc, setHabDesc] = useState("");
-  let _id, _descricao;
+
+  const [obj, setObj] = useState([]);
 
   async function handleListarHabilidades(e) {
     e.preventDefault();
@@ -65,55 +66,26 @@ export default function ListarHabilidades() {
                       </tr>
                     </thead>
                     <tbody>
-                      {habilidades.map((habilidade) => {
+                      {habilidades.map((habilidade, index) => {
                         return (
-                          <tr key={habilidade.id}>
+                          <tr key={index}>
                             <th scope="row">{habilidade.id}</th>
                             <td>{habilidade.descricao}</td>
                             <td>
-                              <div>
-                                <button
-                                  type="button"
-                                  className="btn btn-secondary btn-block"
-                                  data-toggle="modal"
-                                  data-target="#atualizarHab"
-                                >
-                                  Atualizar
-                                </button>
-
-                                <div
-                                  className="modal fade"
-                                  id="atualizarHab"
-                                  tabIndex="-1"
-                                  role="dialog"
-                                >
-                                  <div className="modal-dialog" role="document">
-                                    <div className="modal-content">
-                                      <div className="modal-header">
-                                        <h5
-                                          className="modal-title"
-                                          id="atualizarHab"
-                                        >
-                                          Atualizar Habilidade
-                                        </h5>
-                                        <button
-                                          type="button"
-                                          className="close"
-                                          data-dismiss="modal"
-                                        >
-                                          &times;
-                                        </button>
-                                      </div>
-                                      <div className="modal-body">
-                                        <AtualizarHabilidade
-                                          id={_id}
-                                          descricao={_descricao}
-                                        />
-                                      </div>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
+                              <button
+                                type="button"
+                                className="btn btn-secondary btn-block"
+                                onClick={() =>
+                                  setObj({
+                                    id: habilidade.id,
+                                    desc: habilidade.descricao,
+                                  })
+                                }
+                                data-toggle="collapse"
+                                data-target="#collapseHabilidade"
+                              >
+                                Atualizar
+                              </button>
                             </td>
                           </tr>
                         );
@@ -124,6 +96,12 @@ export default function ListarHabilidades() {
               </div>
             </div>
           </form>
+
+          <div className="collapse" id="collapseHabilidade">
+            <div className="card card-body">
+              <AtualizarHabilidade hab={obj} />
+            </div>
+          </div>
         </div>
       </div>
     </div>
