@@ -2,14 +2,14 @@ import React, { useState } from "react";
 
 import SelectHabilidade from "./SelectHabilidade";
 
-export default function AddHabilidade() {
+export default function AddHabilidade(props) {
   const [habilidades, setHabilidades] = useState([]);    
 
-  async function handleSubmit(e, { habilidade, nivel }) {
+  function handleSubmit(e, { habilidade, nivel }) {
     e.preventDefault();
 
     if(habilidade.id == 0 || nivel.id == 0)
-      alert('Favor selecionar uma habilidade ou nível');
+      alert('Favor selecionar uma habilidade e/ou nível!');
     else {
       var novaHabilidade = {
         habilidade_id: habilidade.id,
@@ -17,9 +17,17 @@ export default function AddHabilidade() {
         nivel_id: nivel.id,
         nivel_descricao: nivel.descricao
       };
-  
+      
+      props.onAdd(novaHabilidade);
+
       setHabilidades(habilidades => [...habilidades, novaHabilidade]);
     }    
+  }
+
+  function remover_habilidade(habilidade_id) {
+    props.onRemove(habilidade_id);
+
+    setHabilidades(habilidades.filter((habilidade) => habilidade.habilidade_id != habilidade_id ));
   }
   
     return (
@@ -45,7 +53,7 @@ export default function AddHabilidade() {
                           <th scope="row">{habilidade.habilidade_descricao}</th>
                           <td>{habilidade.nivel_descricao}</td>
                           <td>
-                            <button type="button" className="btn btn-secondary btn-block">
+                            <button value={habilidade.habilidade_id} onClick={(e) => remover_habilidade(e.target.value)} type="button" className="btn btn-secondary btn-block">
                               -
                             </button>
                           </td>

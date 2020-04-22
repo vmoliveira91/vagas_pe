@@ -1,17 +1,33 @@
 import React, { useState } from "react";
+import { useHistory } from 'react-router-dom';
+import api from '../../services/api';
 
 export default function CadastrarUsuario() {
   const [nomeUsuario, setNomeUsuario] = useState("");
   const [login, setLogin] = useState("");
   const [senha, setSenha] = useState("");
   const [tipo, setTipo] = useState("");
+  const history = useHistory();
 
   async function handleCadastrarUsuario(e) {
     e.preventDefault();
+    
+    try {
+      let obj = {
+        login: login,
+        nome_usuario: nomeUsuario,
+        senha: senha,
+        tipo: tipo
+      }
 
-    alert(
-        `Nome Usuário: ${nomeUsuario} / Login: ${login} / Senha: ${senha} / Tipo: ${tipo}`
-    );
+      const response = await api.post('/cadastrar_usuario', obj);
+
+      alert('Usuário cadastrado com sucesso!');
+
+      history.push('/intranet');
+    } catch(error) {
+      alert(error);
+    }
   }
 
   return (
@@ -26,7 +42,7 @@ export default function CadastrarUsuario() {
                 <input
                   type="text"
                   className="form-control"
-                  placeholder="Nome Usuário"
+                  placeholder="Nome"
                   required="required"
                   value={nomeUsuario}
                   onChange={(e) => setNomeUsuario(e.target.value)}
@@ -62,9 +78,9 @@ export default function CadastrarUsuario() {
                         required
                     >
                         <option value="">TIPO DE USUÁRIO</option>
-                        <option value="1">Trabalhador</option>
-                        <option value="2">Experiência</option>
-                        <option value="3">Habilidade</option>
+                        <option value="1">Agente</option>
+                        <option value="2">Captador</option>
+                        <option value="3">Gerente</option>
                     </select>
                 </div>
 

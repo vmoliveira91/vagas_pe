@@ -2,10 +2,10 @@ import React, { useState } from "react";
 
 import SelectExperiencia from "./SelectExperiencia";
 
-export default function AddExperiencia() {
+export default function AddExperiencia(props) {
   const [experiencias, setExperiencias] = useState([]);    
 
-  async function handleSubmit(e, { experiencia, tempo }) {
+  function handleSubmit(e, { experiencia, tempo }) {
     e.preventDefault();
     
     if(experiencia.id == 0 || tempo.id == 0) {
@@ -18,8 +18,16 @@ export default function AddExperiencia() {
         tempo_descricao: tempo.descricao
       };
 
+      props.onAdd(novaExperiencia);
+
       setExperiencias(experiencias => [...experiencias, novaExperiencia]);
     }
+  }
+
+  function remover_experiencia(experiencia_id) {
+    props.onRemove(experiencia_id);
+    
+    setExperiencias(experiencias.filter((experiencia) => experiencia.experiencia_id != experiencia_id ));
   }
   
     return (
@@ -45,7 +53,7 @@ export default function AddExperiencia() {
                           <th scope="row">{experiencia.experiencia_descricao}</th>
                           <td>{experiencia.tempo_descricao}</td>
                           <td>
-                            <button type="button" className="btn btn-secondary btn-block">
+                            <button value={experiencia.experiencia_id} onClick={(e) => remover_experiencia(e.target.value)} type="button" className="btn btn-secondary btn-block">
                               -
                             </button>
                           </td>
