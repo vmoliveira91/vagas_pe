@@ -7,20 +7,19 @@ import Home from "./components/institucional/Home";
 import EmConstrucao from "./components/institucional/EmConstrucao";
 
 import Login from "./components/institucional/Login";
-import CadastrarTrabalhador from "./components/intranet/CadastrarTrabalhador";
 import MenuPrincipal from "./components/intranet/MenuPrincipal";
 
-import ListarHabilidades from "./components/intranet/ListarHabilidades";
-import AddExperiencia from "./components/intranet/AddExperiencia";
-import AddHabilidade from "./components/intranet/AddHabilidade";
+import CadastrarTrabalhador from "./components/intranet/CadastrarTrabalhador";
+import ListarTrabalhadores from "./components/intranet/ListarTrabalhadores"
+
 import CadastrarHabilidade from "./components/intranet/CadastrarHabilidade";
+import ListarHabilidades from "./components/intranet/ListarHabilidades";
+
 import CadastrarExperiencia from "./components/intranet/CadastrarExperiencia";
 import ListarExperiencias from "./components/intranet/ListarExperiencias";
-import ListarUsuarios from "./components/intranet/ListarUsuarios";
-import SelectHabilidade from "./components/intranet/SelectHabilidade";
+
 import CadastrarUsuario from "./components/intranet/CadastrarUsuario";
-import AtualizarHabilidade from "./components/intranet/AtualizarHabilidade";
-import AtualizarUsuario from "./components/intranet/AtualizarUsuario";
+import ListarUsuarios from "./components/intranet/ListarUsuarios";
 
 export default function Routes() {
   return (
@@ -35,7 +34,7 @@ export default function Routes() {
         <Route path="/cadastrar-habilidade" component={CadastrarHabilidade} />
         <Route path="/cadastrar-experiencia" component={CadastrarExperiencia} />
         <Route path="/cadastrar-usuario" component={CadastrarUsuario} />
-        <Route path="/buscar-listar-trabalhador" component={EmConstrucao} />
+        <Route path="/buscar-listar-trabalhador" component={ListarTrabalhadores} />
         <Route path="/buscar-listar-habilidade" component={ListarHabilidades} />
         <Route path="/buscar-listar-experiencia" component={ListarExperiencias} />
         <Route path="/buscar-listar-usuario" component={ListarUsuarios} />

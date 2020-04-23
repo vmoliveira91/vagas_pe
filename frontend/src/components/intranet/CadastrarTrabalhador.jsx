@@ -36,7 +36,7 @@ export default function Trabalhador() {
         habilidades: habilidades
       }
 
-      const response = await api.post('/cadastrar_trabalhador', obj);
+      await api.post('/cadastrar_trabalhador', obj);
 
       alert('Trabalhador cadastrado com sucesso!');
 
@@ -87,7 +87,7 @@ export default function Trabalhador() {
 
                     <div className="form-group col-md-12">
                       <input
-                        type="text"
+                        type="email"
                         className="form-control"
                         placeholder="E-mail"
                         required="required"

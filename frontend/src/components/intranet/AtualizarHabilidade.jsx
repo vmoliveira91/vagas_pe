@@ -47,7 +47,7 @@ export default function AtualizarHabilidade({ hab }) {
             type="text"
             className="form-control"
             required="required"
-            placeholder="Nova Descrição"
+            placeholder={hab.desc}
             value={novaDesc}
             onChange={(e) => setNovaDesc(e.target.value)}
           />
