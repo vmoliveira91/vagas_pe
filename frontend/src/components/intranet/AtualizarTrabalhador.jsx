@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import api from "../../services/api";
 
@@ -16,6 +16,20 @@ export default function AtualizarTrabalhador({ trabalhador }) {
   const [novoStatus, setNovoStatus] = useState("");
   const [novasExperiencias, setNovasExperiencias] = useState([]);
   const [novasHabilidades, setNovasHabilidades] = useState([]);
+
+  useEffect(() => {
+    if(trabalhador) {
+      setNovoNome(trabalhador.nome);
+      setNovoCpf(trabalhador.cpf);
+      setNovoRg(trabalhador.rg);
+      setNovoEndereco(trabalhador.endereco);
+      setNovaNacionalidade(trabalhador.nacionalidade);
+      setNovoTelefone(trabalhador.telefone);
+      setNovoEmail(trabalhador.email);
+      setNovoSexo(trabalhador.sexo);
+      setNovaDataNascimento(trabalhador.data_nascimento); 
+    }
+  }, [trabalhador]);
 
   async function handleAtualizarTrabalhador(e) {
     e.preventDefault();
@@ -72,7 +86,7 @@ export default function AtualizarTrabalhador({ trabalhador }) {
             type="text"
             className="form-control"
             required="required"
-            placeholder={trabalhador.nome}
+            //placeholder={trabalhador.nome}
             value={novoNome}
             onChange={(e) => setNovoNome(e.target.value)}
           />
@@ -83,7 +97,7 @@ export default function AtualizarTrabalhador({ trabalhador }) {
             type="text"
             className="form-control"
             required="required"
-            placeholder={trabalhador.cpf}
+            //placeholder={trabalhador.cpf}
             value={novoCpf}
             onChange={(e) => setNovoCpf(e.target.value)}
           />
@@ -94,7 +108,7 @@ export default function AtualizarTrabalhador({ trabalhador }) {
             type="text"
             className="form-control"
             required="required"
-            placeholder={trabalhador.rg}
+            //placeholder={trabalhador.rg}
             value={novoRg}
             onChange={(e) => setNovoRg(e.target.value)}
           />
@@ -105,7 +119,7 @@ export default function AtualizarTrabalhador({ trabalhador }) {
             type="text"
             className="form-control"
             required="required"
-            placeholder={trabalhador.endereco}
+            //placeholder={trabalhador.endereco}
             value={novoEndereco}
             onChange={(e) => setNovoEndereco(e.target.value)}
           />
@@ -116,7 +130,7 @@ export default function AtualizarTrabalhador({ trabalhador }) {
             type="text"
             className="form-control"
             required="required"
-            placeholder={trabalhador.nacionalidade}
+            //placeholder={trabalhador.nacionalidade}
             value={novaNacionalidade}
             onChange={(e) => setNovaNacionalidade(e.target.value)}
           />
@@ -127,7 +141,7 @@ export default function AtualizarTrabalhador({ trabalhador }) {
             type="text"
             className="form-control"
             required="required"
-            placeholder={trabalhador.telefone}
+            //placeholder={trabalhador.telefone}
             value={novoTelefone}
             onChange={(e) => setNovoTelefone(e.target.value)}
           />
@@ -138,7 +152,7 @@ export default function AtualizarTrabalhador({ trabalhador }) {
             type="text"
             className="form-control"
             required="required"
-            placeholder={trabalhador.email}
+            //placeholder={trabalhador.email}
             value={novoEmail}
             onChange={(e) => setNovoEmail(e.target.value)}
           />
@@ -149,7 +163,7 @@ export default function AtualizarTrabalhador({ trabalhador }) {
             type="text"
             className="form-control"
             required="required"
-            placeholder={trabalhador.sexo}
+            //placeholder={trabalhador.sexo}
             value={novoSexo}
             onChange={(e) => setNovoSexo(e.target.value)}
           />
@@ -160,7 +174,7 @@ export default function AtualizarTrabalhador({ trabalhador }) {
             type="text"
             className="form-control"
             required="required"
-            placeholder={trabalhador.data_nascimento}
+            //placeholder={trabalhador.data_nascimento}
             value={novaDataNascimento}
             onChange={(e) => setNovaDataNascimento(e.target.value)}
           />

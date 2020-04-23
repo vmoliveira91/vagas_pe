@@ -1,9 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import api from "../../services/api";
 
-export default function AtualizarHabilidade({ exp }) {
-  const [novaDesc, setNovaDesc] = useState("");
+export default function AtualizarExperiencia({ exp }) {
+  const [novaDesc, setNovaDesc] = useState('');
+  
+  useEffect(() => {
+    if(exp)
+      setNovaDesc(exp.desc);
+  }, [exp]);
 
   async function handleNovaDesc(e) {
     e.preventDefault();
