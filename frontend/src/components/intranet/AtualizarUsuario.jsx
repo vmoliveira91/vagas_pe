@@ -114,8 +114,9 @@ export default function AtualizarUsuario({ user }) {
             className="btn btn-primary btn-block mt-3"
             id="btAtualizar"
             onClick={handleAtualizarUsuario}
-            >
-            Enviar
+            data-toggle="collapse"
+            data-target="#collapseUsuario"            >
+            Atualizar
             </button>
         </div>
       </div>

@@ -73,6 +73,8 @@ export default function AtualizarHabilidade({ hab }) {
             className="btn btn-primary btn-block"
             id="btAtualizar"
             onClick={handleNovaDesc}
+            data-toggle="collapse"
+            data-target="#collapseHabilidade"
           >
             Enviar
           </button>

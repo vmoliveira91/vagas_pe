@@ -36,7 +36,7 @@ export default function Header() {
             </li>
             <li className="nav-item">
               <Link className="nav-link" to="/login">
-                Intranet
+                Login
               </Link>
             </li>
           </ul>

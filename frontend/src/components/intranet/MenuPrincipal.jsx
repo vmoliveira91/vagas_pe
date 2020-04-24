@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import Logo from "../../images/logovagaspe.png"
 
 export default function MenuPrincipal() {
 
@@ -13,7 +14,7 @@ export default function MenuPrincipal() {
                             <form>
                                 <div className="form-row">
                                     <img
-                                        src="https://blog.horadolar.com.br/wp-content/uploads/2019/01/Atualizar-Carteira-de-Trabalho-da-Empregada-Dom%C3%A9stica.jpg"
+                                        src={Logo}
                                         className="img-fluid meu-padrao"
                                         alt="Responsive image"
                                     />

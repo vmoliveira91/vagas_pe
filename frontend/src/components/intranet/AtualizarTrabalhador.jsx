@@ -218,6 +218,8 @@ export default function AtualizarTrabalhador({ trabalhador }) {
             className="btn btn-primary btn-block mt-3"
             id="btAtualizar"
             onClick={handleAtualizarTrabalhador}
+            data-toggle="collapse"
+            data-target="#collapseTrabalhador"
             >
             Atualizar
             </button>

@@ -78,6 +78,8 @@ export default function AtualizarExperiencia({ exp }) {
             className="btn btn-primary btn-block"
             id="btAtualizar"
             onClick={handleNovaDesc}
+            data-toggle="collapse"
+            data-target="#collapseExperiencia"
           >
             Enviar
           </button>
