@@ -92,8 +92,22 @@ export default function ListarTrabalhadores() {
                                       data_validade: trabalhador.data_validade,
                                       status: trabalhador.status,
                                       ativo: trabalhador.ativo,
-                                      experiencias: trabalhador.experiencias,
-                                      habilidades: trabalhador.habilidades,
+                                      experiencias: trabalhador.experiencias.map((experiencia) => {
+                                        return {
+                                          experiencia_id: experiencia.id,
+                                          experiencia_descricao: experiencia.descricao,
+                                          tempo_id: experiencia.tempo.id,
+                                          tempo_descricao: experiencia.tempo.descricao
+                                        }
+                                      }),
+                                      habilidades: trabalhador.habilidades.map((habilidade) => {
+                                        return {
+                                          habilidade_id: habilidade.id,
+                                          habilidade_descricao: habilidade.descricao,
+                                          nivel_id: habilidade.nivel.id,
+                                          nivel_descricao: habilidade.nivel.descricao
+                                        }
+                                      })
                                     })
                                   }
                                   data-toggle="collapse"

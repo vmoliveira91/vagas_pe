@@ -1,9 +1,23 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import SelectHabilidade from "./SelectHabilidade";
 
 export default function AddHabilidade(props) {
   const [habilidades, setHabilidades] = useState([]);    
+
+  useEffect(() => {
+    if(props.habilidades) {
+      for(let i = 0; i < props.habilidades.length; i++) {
+        let habilidade = {
+          habilidade_id: props.habilidades[i].habilidade_id,
+          habilidade_descricao: props.habilidades[i].habilidade_descricao,
+          nivel_id: props.habilidades[i].nivel_id,
+          nivel_descricao: props.habilidades[i].nivel_descricao
+        }
+        setHabilidades(habilidades => [...habilidades, habilidade]);
+      }
+    }
+  }, [props.habilidades]);
 
   function handleSubmit(e, { habilidade, nivel }) {
     e.preventDefault();
@@ -20,14 +34,14 @@ export default function AddHabilidade(props) {
       
       props.onAdd(novaHabilidade);
 
-      setHabilidades(habilidades => [...habilidades, novaHabilidade]);
+      setHabilidades([]);
     }    
   }
 
   function remover_habilidade(habilidade_id) {
     props.onRemove(habilidade_id);
 
-    setHabilidades(habilidades.filter((habilidade) => habilidade.habilidade_id != habilidade_id ));
+    setHabilidades([]);
   }
   
     return (

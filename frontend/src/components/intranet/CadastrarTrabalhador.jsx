@@ -187,11 +187,11 @@ export default function Trabalhador() {
                   </div>  
                   <div className="row col-md-8">
                       <div className="col-md-6">
-                        <AddExperiencia experiencias={experiencias} onAdd={handleAddExperiencia} onRemove={handleRemoveExperiencia}/>
+                        <AddExperiencia experiencias={experiencias} onAdd={handleAddExperiencia} onRemove={handleRemoveExperiencia} />
                     </div>
 
                     <div className="col-md-6">
-                        <AddHabilidade habilidades={habilidades} onAdd={handleAddHabilidade} onRemove={handleRemoveHabilidade}/>
+                        <AddHabilidade habilidades={habilidades} onAdd={handleAddHabilidade} onRemove={handleRemoveHabilidade} />
                     </div>
                 </div>
         </div>

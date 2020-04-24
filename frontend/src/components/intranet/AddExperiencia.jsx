@@ -1,9 +1,23 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import SelectExperiencia from "./SelectExperiencia";
 
 export default function AddExperiencia(props) {
-  const [experiencias, setExperiencias] = useState([]);    
+  const [experiencias, setExperiencias] = useState([]);
+  
+  useEffect(() => {
+    if(props.experiencias) {
+      for(let i = 0; i < props.experiencias.length; i++) {
+        let experiencia = {
+          experiencia_id: props.experiencias[i].experiencia_id,
+          experiencia_descricao: props.experiencias[i].experiencia_descricao,
+          tempo_id: props.experiencias[i].tempo_id,
+          tempo_descricao: props.experiencias[i].tempo_descricao
+        }
+        setExperiencias(experiencias => [...experiencias, experiencia]);
+      }
+    }
+  }, [props.experiencias]);
 
   function handleSubmit(e, { experiencia, tempo }) {
     e.preventDefault();
@@ -17,17 +31,17 @@ export default function AddExperiencia(props) {
         tempo_id: tempo.id,
         tempo_descricao: tempo.descricao
       };
-
+      
       props.onAdd(novaExperiencia);
-
-      setExperiencias(experiencias => [...experiencias, novaExperiencia]);
+      
+      setExperiencias([]);
     }
   }
 
   function remover_experiencia(experiencia_id) {
     props.onRemove(experiencia_id);
     
-    setExperiencias(experiencias.filter((experiencia) => experiencia.experiencia_id != experiencia_id ));
+    setExperiencias([]);
   }
   
     return (

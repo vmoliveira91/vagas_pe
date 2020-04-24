@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 
 import api from "../../services/api";
+import AddExperiencia from "./AddExperiencia";
+import AddHabilidade from "./AddHabilidade";
 
 export default function AtualizarTrabalhador({ trabalhador }) {
   const [novoNome, setNovoNome] = useState("");
@@ -27,13 +29,15 @@ export default function AtualizarTrabalhador({ trabalhador }) {
       setNovoTelefone(trabalhador.telefone);
       setNovoEmail(trabalhador.email);
       setNovoSexo(trabalhador.sexo);
-      setNovaDataNascimento(trabalhador.data_nascimento); 
-    }
+      setNovaDataNascimento(trabalhador.data_nascimento);
+      setNovasExperiencias(trabalhador.experiencias);
+      setNovasHabilidades(trabalhador.habilidades);
+    }    
   }, [trabalhador]);
 
   async function handleAtualizarTrabalhador(e) {
     e.preventDefault();
-
+    
     let obj = {
       id: trabalhador.id,
       nome: novoNome,
@@ -47,8 +51,22 @@ export default function AtualizarTrabalhador({ trabalhador }) {
       data_nascimento: novaDataNascimento,
       data_validade: novaDataValidade,
       status: novoStatus,
-      experiencias: novasExperiencias,
-      habilidades: novasHabilidades,
+      experiencias: novasExperiencias.map((experiencia) => {
+        return {
+          experiencia_id: parseInt(experiencia.experiencia_id),
+          experiencia_descricao: experiencia.experiencia_descricao,
+          tempo_id: parseInt(experiencia.tempo_id),
+          tempo_descricao: experiencia.tempo_descricao
+        }
+      }),
+      habilidades: novasHabilidades.map((habilidade) => {
+        return {
+          habilidade_id: parseInt(habilidade.habilidade_id),
+          habilidade_descricao: habilidade.habilidade_descricao,
+          nivel_id: parseInt(habilidade.nivel_id),
+          nivel_descricao: habilidade.nivel_descricao
+        }
+      }),
       ativo: 1,
     };
 
@@ -69,24 +87,42 @@ export default function AtualizarTrabalhador({ trabalhador }) {
     };
 
     try {
-      await api.post("/desativar_trabalhador", obj);
+      const response = await api.post("/desativar_trabalhador", obj);
 
-      alert("Trabalhador desativado com sucesso!");
+      if(response.data.is_ativo)
+        alert("Trabalhador ativado com sucesso!");
+      else
+        alert("Trabalhador desativado com sucesso!");
     } catch (error) {
       alert(error);
     }
   }
 
+  function handleAddExperiencia(novaExperiencia) {
+    setNovasExperiencias(experiencias => [...experiencias, novaExperiencia]);
+  }
+
+  function handleRemoveExperiencia(experiencia_id) {
+    setNovasExperiencias(experiencias => experiencias.filter((experiencia) => experiencia.experiencia_id != experiencia_id));
+  }
+
+  function handleAddHabilidade(novaHabilidade) {
+    setNovasHabilidades(habilidades => [...habilidades, novaHabilidade]);
+  }
+
+  function handleRemoveHabilidade(habilidade_id) {
+    setNovasHabilidades(habilidades => habilidades.filter((habilidade) => habilidade.habilidade_id != habilidade_id));
+  }
+
   return (
     <div>
-      <p className="border-bottom">{trabalhador.id}. {trabalhador.nome}</p>
+      <p className="border-bottom">ID - {trabalhador.id}</p>
       <div className="form-row">
         <div className="form-group col-lg-12">
           <input
             type="text"
             className="form-control"
             required="required"
-            //placeholder={trabalhador.nome}
             value={novoNome}
             onChange={(e) => setNovoNome(e.target.value)}
           />
@@ -97,7 +133,6 @@ export default function AtualizarTrabalhador({ trabalhador }) {
             type="text"
             className="form-control"
             required="required"
-            //placeholder={trabalhador.cpf}
             value={novoCpf}
             onChange={(e) => setNovoCpf(e.target.value)}
           />
@@ -108,7 +143,6 @@ export default function AtualizarTrabalhador({ trabalhador }) {
             type="text"
             className="form-control"
             required="required"
-            //placeholder={trabalhador.rg}
             value={novoRg}
             onChange={(e) => setNovoRg(e.target.value)}
           />
@@ -119,7 +153,6 @@ export default function AtualizarTrabalhador({ trabalhador }) {
             type="text"
             className="form-control"
             required="required"
-            //placeholder={trabalhador.endereco}
             value={novoEndereco}
             onChange={(e) => setNovoEndereco(e.target.value)}
           />
@@ -130,7 +163,6 @@ export default function AtualizarTrabalhador({ trabalhador }) {
             type="text"
             className="form-control"
             required="required"
-            //placeholder={trabalhador.nacionalidade}
             value={novaNacionalidade}
             onChange={(e) => setNovaNacionalidade(e.target.value)}
           />
@@ -141,7 +173,6 @@ export default function AtualizarTrabalhador({ trabalhador }) {
             type="text"
             className="form-control"
             required="required"
-            //placeholder={trabalhador.telefone}
             value={novoTelefone}
             onChange={(e) => setNovoTelefone(e.target.value)}
           />
@@ -152,7 +183,6 @@ export default function AtualizarTrabalhador({ trabalhador }) {
             type="text"
             className="form-control"
             required="required"
-            //placeholder={trabalhador.email}
             value={novoEmail}
             onChange={(e) => setNovoEmail(e.target.value)}
           />
@@ -163,7 +193,6 @@ export default function AtualizarTrabalhador({ trabalhador }) {
             type="text"
             className="form-control"
             required="required"
-            //placeholder={trabalhador.sexo}
             value={novoSexo}
             onChange={(e) => setNovoSexo(e.target.value)}
           />
@@ -174,55 +203,34 @@ export default function AtualizarTrabalhador({ trabalhador }) {
             type="text"
             className="form-control"
             required="required"
-            //placeholder={trabalhador.data_nascimento}
             value={novaDataNascimento}
             onChange={(e) => setNovaDataNascimento(e.target.value)}
           />
         </div>
 
-        <div className="form-group col-sm-5">
-          <input
-            type="text"
-            className="form-control"
-            required="required"
-            placeholder={trabalhador.data_validade}
-            value={novaDataValidade}
-            onChange={(e) => setNovaDataValidade(e.target.value)}
-          />
-        </div>
+        <AddExperiencia experiencias={novasExperiencias} onAdd={handleAddExperiencia} onRemove={handleRemoveExperiencia} local={'atualizar'}/>
 
-        <div className="form-group col-md-7">
-          <input
-            type="text"
-            className="form-control"
-            required="required"
-            placeholder={trabalhador.status}
-            value={novoStatus}
-            onChange={(e) => setNovoStatus(e.target.value)}
-          />
-        </div>
-        
-        <div className="form-check col-lg-12 pt-1 bg-white" style={{width: "100%", border: "1px solid #dddddd", borderRadius: "5px" }}>
-            <label
-                for="exampleCheck1"
-            >
-                Ativo
-            </label>
-            <input
-                className="ml-1"
-                type="checkbox"
-                id="exampleCheck1"
-            />           
-        </div>
+        <AddHabilidade habilidades={novasHabilidades} onAdd={handleAddHabilidade} onRemove={handleRemoveHabilidade} local={'atualizar'} />
 
-        <div className="form-group col-lg-12">
+        <div className="form-group col-lg-6">
             <button
             type="button"
             className="btn btn-primary btn-block mt-3"
             id="btAtualizar"
             onClick={handleAtualizarTrabalhador}
             >
-            Enviar
+            Atualizar
+            </button>
+        </div>
+
+        <div className="form-group col-lg-6">
+            <button
+            type="button"
+            className="btn btn-primary btn-block mt-3"
+            id="btAtualizar"
+            onClick={handleDesativar}
+            >
+            Ativar/Desativar
             </button>
         </div>
       </div>
