@@ -1,9 +1,11 @@
 import React, { useState } from "react";
+import { useHistory } from 'react-router-dom';
 
 import api from "../../services/api";
 
 export default function CadastrarExperiencia() {
   const [nome, setNome] = useState("");
+  const history = useHistory();
 
   async function handleCadastroExperiencia(e) {
     e.preventDefault();
@@ -16,6 +18,8 @@ export default function CadastrarExperiencia() {
       await api.post("/cadastrar_experiencia", obj);
 
       alert("Experiência cadastrada com sucesso.");
+
+      history.push('/intranet');
     } catch (error) {
       alert(error);
     }

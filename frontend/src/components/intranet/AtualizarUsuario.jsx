@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useHistory } from 'react-router-dom';
 
 import api from "../../services/api";
 
@@ -7,6 +8,16 @@ export default function AtualizarUsuario({ user }) {
   const [novoNomeUsuario, setNovoNomeUsuario] = useState("");
   const [novaSenha, setNovaSenha] = useState("");
   const [novoTipo, setNovoTipo] = useState("");
+  const history = useHistory();
+
+  useEffect(() => {
+    if(user) {
+      setNovoLogin(user.login);
+      setNovoNomeUsuario(user.nome);
+      setNovaSenha(user.senha);
+      setNovoTipo(user.tipo);
+    }
+  }, [user]);
 
   async function handleAtualizarUsuario(e) {
     e.preventDefault();
@@ -24,6 +35,8 @@ export default function AtualizarUsuario({ user }) {
       await api.post("/atualizar_usuario", obj);
 
       alert("Usuário atualizado com sucesso!");
+
+      history.push('/intranet');
     } catch (error) {
       alert(error);
     }
@@ -37,9 +50,14 @@ export default function AtualizarUsuario({ user }) {
     };
 
     try {
-      await api.post("/desativar_usuario", obj);
+      const response = await api.post("/desativar_usuario", obj);
 
-      alert("Usuário desativado com sucesso!");
+      if(response.data.is_ativo)
+        alert('Usuário ativado com sucesso!');
+      else
+        alert("Usuário desativado com sucesso!");
+      
+      history.push('/intranet');
     } catch (error) {
       alert(error);
     }
@@ -47,7 +65,7 @@ export default function AtualizarUsuario({ user }) {
 
   return (
     <div>
-      <p className="border-bottom">{user.id}. {user.nome}</p>
+      <p className="border-bottom">ID - {user.id}</p>
       <div className="form-row">
         <div className="form-group col-lg-12">
           <input
@@ -78,9 +96,9 @@ export default function AtualizarUsuario({ user }) {
             required
           >
             <option value="">Novo tipo</option>
-            <option value="1">Agente</option>
-            <option value="2">Captador</option>
-            <option value="3">Gerente</option>
+            { novoTipo == 1 ? <option value="1" selected>Agente</option> : <option value="1">Agente</option>}
+            { novoTipo == 2 ? <option value="2" selected>Captador</option> : <option value="2">Captador</option>}
+            { novoTipo == 3 ? <option value="3" selected>Gerente</option> : <option value="3">Gerente</option>}
           </select>
         </div>
 
@@ -95,20 +113,7 @@ export default function AtualizarUsuario({ user }) {
           />
         </div>
 
-        <div className="form-check col-lg-4 pt-1 bg-white" style={{width: "100%", border: "1px solid #dddddd", borderRadius: "5px" }}>
-            <label
-                for="exampleCheck1"
-            >
-                Ativo
-            </label>
-            <input
-                className="ml-1"
-                type="checkbox"
-                id="exampleCheck1"
-            />           
-        </div>
-
-        <div className="form-group col-lg-12">
+        <div className="form-group col-lg-6">
             <button
             type="button"
             className="btn btn-primary btn-block mt-3"
@@ -117,6 +122,18 @@ export default function AtualizarUsuario({ user }) {
             data-toggle="collapse"
             data-target="#collapseUsuario"            >
             Atualizar
+            </button>
+        </div>
+
+        <div className="form-group col-lg-6">
+            <button
+            type="button"
+            className="btn btn-primary btn-block mt-3"
+            id="btAtualizar"
+            onClick={handleDesativar}
+            data-toggle="collapse"
+            data-target="#collapseUsuario"            >
+            Ativar/Desativar
             </button>
         </div>
       </div>

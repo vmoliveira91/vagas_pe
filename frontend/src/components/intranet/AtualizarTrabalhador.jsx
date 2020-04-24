@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useHistory} from 'react-router-dom';
 
 import api from "../../services/api";
 import AddExperiencia from "./AddExperiencia";
@@ -18,6 +19,7 @@ export default function AtualizarTrabalhador({ trabalhador }) {
   const [novoStatus, setNovoStatus] = useState("");
   const [novasExperiencias, setNovasExperiencias] = useState([]);
   const [novasHabilidades, setNovasHabilidades] = useState([]);
+  const history = useHistory();
 
   useEffect(() => {
     if(trabalhador) {
@@ -74,6 +76,8 @@ export default function AtualizarTrabalhador({ trabalhador }) {
       await api.post("/atualizar_trabalhador", obj);
 
       alert("Trabalhador atualizado com sucesso!");
+
+      history.push('/intranet');
     } catch (error) {
       alert(error);
     }
@@ -93,6 +97,8 @@ export default function AtualizarTrabalhador({ trabalhador }) {
         alert("Trabalhador ativado com sucesso!");
       else
         alert("Trabalhador desativado com sucesso!");
+      
+      history.push('/intranet');
     } catch (error) {
       alert(error);
     }

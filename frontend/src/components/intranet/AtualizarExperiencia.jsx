@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
+import { useHistory } from 'react-router-dom';
 
 import api from "../../services/api";
 
 export default function AtualizarExperiencia({ exp }) {
   const [novaDesc, setNovaDesc] = useState('');
-  
+  const history = useHistory();
+
   useEffect(() => {
     if(exp)
       setNovaDesc(exp.desc);
@@ -22,6 +24,8 @@ export default function AtualizarExperiencia({ exp }) {
       await api.post("/atualizar_experiencia", obj);
 
       alert("Experiência atualizada com sucesso!");
+
+      history.push('/intranet');
     } catch (error) {
       alert(error);
     }
@@ -35,9 +39,14 @@ export default function AtualizarExperiencia({ exp }) {
     }
 
     try {
-        await api.post("/desativar_experiencia", obj);
+        const response = await api.post("/desativar_experiencia", obj);
 
-        alert("Experiência desativada com sucesso!");
+        if(response.data.is_ativo)
+          alert('Experiência ativada com sucesso!');
+        else
+          alert("Experiência desativada com sucesso!");
+
+        history.push('/intranet');
       } catch (error) {
         alert(error);
       }
@@ -45,34 +54,19 @@ export default function AtualizarExperiencia({ exp }) {
 
   return (
     <div className="rounded">
-      <p className="border-bottom">{exp.id}. {exp.desc}</p>
+      <p className="border-bottom">ID - {exp.id}</p>
       <div className="form-row">
-        <div className="form-group col-md-8">
+        <div className="form-group col-md-12">
           <input
             type="text"
             className="form-control"
             required="required"
-            placeholder="Nova Descrição"
             value={novaDesc}
             onChange={(e) => setNovaDesc(e.target.value)}
           />
         </div>
 
-
-        <div className="form-check col-lg-3 mt-2">
-            <label
-            for="exampleCheck1"
-            >
-            Ativo
-            </label>
-            <input
-            className="ml-1"
-            type="checkbox"
-            id="exampleCheck1"
-            />
-        </div>
-
-        <div className="form-group col-sm-4">
+        <div className="form-group col-sm-6">
           <button
             type="button"
             className="btn btn-primary btn-block"
@@ -81,9 +75,23 @@ export default function AtualizarExperiencia({ exp }) {
             data-toggle="collapse"
             data-target="#collapseExperiencia"
           >
-            Enviar
+            Atualizar
           </button>
         </div>
+
+        <div className="form-group col-sm-6">
+          <button
+            type="button"
+            className="btn btn-primary btn-block"
+            id="btAtualizar"
+            onClick={handleDesativar}
+            data-toggle="collapse"
+            data-target="#collapseExperiencia"
+          >
+            Ativar/Desativar
+          </button>
+        </div>
+
       </div>
     </div>
   );

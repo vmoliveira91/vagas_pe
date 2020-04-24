@@ -81,7 +81,9 @@ export default function ListarUsuarios() {
                                   onClick={() =>
                                     setObj({
                                       id: usuario.id,
+                                      login: usuario.login,
                                       nome: usuario.nome_usuario,
+                                      senha: usuario.senha,
                                       tipo: usuario.tipo,
                                       ativo: usuario.ativo,
                                     })

@@ -1,9 +1,11 @@
 import React, { useState } from "react";
+import { useHistory } from 'react-router-dom';
 
 import api from "../../services/api";
 
 export default function CadastrarHabilidade() {
   const [nome, setNome] = useState("");
+  const history = useHistory();
 
   async function handleCadastroHabilidade(e) {
     e.preventDefault();
@@ -16,6 +18,8 @@ export default function CadastrarHabilidade() {
       await api.post("/cadastrar_habilidade", obj);
 
       alert("Habilidade cadastrada com sucesso.");
+
+      history.push('/intranet');
     } catch (error) {
       alert(error);
     }

@@ -1,9 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useHistory } from 'react-router-dom';
 
 import api from "../../services/api";
 
 export default function AtualizarHabilidade({ hab }) {
   const [novaDesc, setNovaDesc] = useState("");
+  const history = useHistory();
+
+  useEffect(() => {
+    if(hab)
+      setNovaDesc(hab.desc);
+  }, [hab]);
 
   async function handleNovaDesc(e) {
     e.preventDefault();
@@ -17,6 +24,8 @@ export default function AtualizarHabilidade({ hab }) {
       await api.post("/atualizar_habilidade", obj);
 
       alert("Habilidade atualizada com sucesso!");
+
+      history.push('/intranet');
     } catch (error) {
       alert(error);
     }
@@ -30,9 +39,14 @@ export default function AtualizarHabilidade({ hab }) {
     }
 
     try {
-      await api.post("/desativar_habilidade", obj);
+      const response = await api.post("/desativar_habilidade", obj);
 
-      alert("Habilidade desativada com sucesso!");
+      if(response.data.is_ativo)
+        alert('Habilidade ativada com sucesso!');
+      else
+        alert("Habilidade desativada com sucesso!");
+      
+      history.push('/intranet');
     } catch (error) {
       alert(error);
     }
@@ -40,34 +54,19 @@ export default function AtualizarHabilidade({ hab }) {
 
   return (
     <div>
-      <p className="border-bottom">{hab.id}. {hab.desc}</p>
+      <p className="border-bottom">ID - {hab.id}</p>
       <div className="form-row">
-        <div className="form-group col-md-8">
+        <div className="form-group col-md-12">
           <input
             type="text"
             className="form-control"
             required="required"
-            placeholder={hab.desc}
             value={novaDesc}
             onChange={(e) => setNovaDesc(e.target.value)}
           />
         </div>
 
-        <div className="form-check col-lg-3 mt-2">
-            <label
-            for="exampleCheck1"
-            >
-            Ativo
-            </label>
-            <input
-            className="ml-1"
-            type="checkbox"
-            id="exampleCheck1"
-            />           
-        </div>
-
-
-        <div className="form-group mt-3 col-sm-12">
+        <div className="form-group mt-3 col-sm-6">
           <button
             type="button"
             className="btn btn-primary btn-block"
@@ -76,7 +75,20 @@ export default function AtualizarHabilidade({ hab }) {
             data-toggle="collapse"
             data-target="#collapseHabilidade"
           >
-            Enviar
+            Atualizar
+          </button>
+        </div>
+
+        <div className="form-group mt-3 col-sm-6">
+          <button
+            type="button"
+            className="btn btn-primary btn-block"
+            id="btAtualizar"
+            onClick={handleDesativar}
+            data-toggle="collapse"
+            data-target="#collapseHabilidade"
+          >
+            Ativar/Desativar
           </button>
         </div>
       </div>
