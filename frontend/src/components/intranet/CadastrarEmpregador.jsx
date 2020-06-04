@@ -1,26 +1,47 @@
 import React, { useState } from "react";
+import { useHistory } from 'react-router-dom';
+import api from '../../services/api';
 
-import Endereco from "./Endereco";
-
-export default function Empresa() {
+export default function CadastrarEmpregador() {
   const [razaoSocial, setRazaoSocial] = useState("");
   const [nomeFantasia, setNomeFantasia] = useState("");
   const [cnpj, setCnpj] = useState("");
+  const [endereco, setEndereco] = useState("");
   const [telefone, setTelefone] = useState("");
   const [email, setEmail] = useState("");
+  const history = useHistory();
 
-  async function handleEmpresa(e) {
+  async function handleEmpregador(e) {
     e.preventDefault();
 
-    alert(
-      `Razão Social: ${razaoSocial} / Nome Fantasia: ${nomeFantasia} / CNPJ: ${cnpj} / Telefone: ${telefone} / E-mail: ${email}`
-    );
+    try {
+      let obj = {
+        id: empregador.id,
+        razao_social: razaoSocial,
+        nome_fantasia: nomeFantasia,
+        cpf: cnpj,
+        endereco: endereco,
+        telefone: telefone,
+        email: email,
+        ativo: 1,
+      }
+
+      await api.post('/cadastrar_empregador', obj);
+
+      alert('Empregador cadastrado com sucesso!');
+
+      history.push('/intranet');
+
+    } catch (error) {
+      alert(error);
+    }
   }
+
   return (
     <div className="central">
       <div className="d-flex justify-content-center h-100">
         <div>
-          <form onSubmit={handleEmpresa}>
+          <form onSubmit={handleEmpregador}>
             <div className="form-row">
               <h2 className="form-group col-lg-12">Cadastro de Empresa</h2>
 
@@ -57,6 +78,17 @@ export default function Empresa() {
                 />
               </div>
 
+              <div className="form-group col-md-12">
+                <input
+                  type="text"
+                  className="form-control"
+                  placeholder="Endereço"
+                  required="required"
+                  value={endereco}
+                  onChange={(e) => setEndereco(e.target.value)}
+                />
+              </div>
+
               <div className="form-group col-md-6">
                 <input
                   type="text"
@@ -77,44 +109,6 @@ export default function Empresa() {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                 />
-              </div>
-
-              <div className="form-group col-lg-12">
-                <button
-                  type="button"
-                  className="btn btn-secondary btn-block"
-                  data-toggle="modal"
-                  data-target="#endereco"
-                >
-                  Endereço
-                </button>
-
-                <div
-                  className="modal fade"
-                  id="endereco"
-                  tabIndex="-1"
-                  role="dialog"
-                >
-                  <div className="modal-dialog" role="document">
-                    <div className="modal-content">
-                      <div className="modal-header">
-                        <h5 className="modal-title" id="endereco">
-                          Endereço
-                        </h5>
-                        <button
-                          type="button"
-                          className="close"
-                          data-dismiss="modal"
-                        >
-                          &times;
-                        </button>
-                      </div>
-                      <div className="modal-body">
-                        <Endereco />
-                      </div>
-                    </div>
-                  </div>
-                </div>
               </div>
 
               <div className="form-group col-lg-12">
