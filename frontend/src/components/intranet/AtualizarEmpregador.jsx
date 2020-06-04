@@ -74,7 +74,7 @@ export default function AtualizarEmpregador({ empregador }) {
 
     return (
         <div>
-            <p className="border-bottom">ID - </p>
+            <p className="border-bottom">ID - {empregador.id}</p>
             <div className="form-row">
                 <div className="form-group col-lg-12">
                     <input
