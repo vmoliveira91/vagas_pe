@@ -5,7 +5,9 @@ import api from '../../services/api';
 export default function CadastrarVaga() {
     const [descricao, setDescricao] = useState("");
     const [salario, setSalario] = useState("");
+    const [empregadores, setEmpregadores] = useState([]);
     const [empregador, setEmpregador] = useState("");
+    const [funcoes, setFuncoes] = useState([]);
     const [funcao, setFuncao] = useState("");
     const [beneficios, setBeneficios] = useState([]);
     const [experiencias, setExperiencias] = useState([]);
@@ -35,6 +37,34 @@ export default function CadastrarVaga() {
         } catch (error) {
             alert(error);
         }
+    }
+
+    async function get_empregadores_funcoes() {
+        let ativo = 1;
+
+        try {
+            let response = await api.get(`/listar_empregadores/${'-'}/${ativo}`);
+            response.data.empregadores.unshift({ id: 0, nomeFantasia: 'Empregador' });
+            setEmpregadores(response.data.empregadores);
+
+            response = await api.get(`/listar_funcoes/${'-'}/${ativo}`);
+            response.data.funcoes.unshift({ id: 0, nome: 'Função' });
+            setFuncoes(response.data.funcoes);
+        } catch (error) {
+            alert(error);
+        }
+    }
+
+    useEffect(() => {
+        get_empregadores_funcoes();
+    }, []);
+
+    function handleAddBeneficio(novoBeneficio) {
+        setBeneficios(beneficios => [...beneficios, novoBeneficio]);
+    }
+
+    function handleRemoveBeneficio(beneficio_id) {
+        seBbeneficios(beneficios => beneficios.filter((beneficio) => beneficio.beneficio_id != beneficio_id));
     }
 
     function handleAddExperiencia(novaExperiencia) {
@@ -84,6 +114,22 @@ export default function CadastrarVaga() {
                             </div>
 
                             <div className="form-group col-lg-12">
+                                <select className="form-control" onChange={(e) => setFuncao(e.target.value)}>
+                                    {funcoes.map((funcao) => {
+                                        return <option value={funcao.id}>{funcao.nome}</option>
+                                    })}
+                                </select>
+                            </div>
+
+                            <div className="form-group col-lg-12">
+                                <select className="form-control" onChange={(e) => setEmpregador(e.target.value)}>
+                                    {empregadores.map((empregador) => {
+                                        return <option value={empregador.id}>{empregador.nomeFantasia}</option>
+                                    })}
+                                </select>
+                            </div>
+
+                            <div className="form-group col-lg-12">
                                 <button
                                     type="submit"
                                     className="btn btn-primary btn-block"
@@ -96,11 +142,15 @@ export default function CadastrarVaga() {
                     </form>
 
                     <div className="row">
-                        <div className="col-md-6">
+                        <div className="col-lg-4">
+                            <AddBeneficio beneficios={beneficios} onAdd={handleAddBeneficio} onRemove={handleRemoveBeneficio} />
+                        </div>
+
+                        <div className="col-md-4">
                             <AddExperiencia experiencias={experiencias} onAdd={handleAddExperiencia} onRemove={handleRemoveExperiencia} />
                         </div>
 
-                        <div className="col-md-6">
+                        <div className="col-md-4">
                             <AddHabilidade habilidades={habilidades} onAdd={handleAddHabilidade} onRemove={handleRemoveHabilidade} />
                         </div>
                     </div>
