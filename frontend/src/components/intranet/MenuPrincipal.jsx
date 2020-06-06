@@ -26,10 +26,18 @@ export default function MenuPrincipal() {
                                             required
                                         >
                                             <option value="">SELECIONE PARA INICIAR</option>
-                                            <option value="trabalhador">Trabalhador</option>
                                             <option value="experiencia">Experiência</option>
                                             <option value="habilidade">Habilidade</option>
+                                            <option value="tempo">Tempo</option>
+                                            <option value="nivel">Nível</option>
+                                            <option value="beneficio">Benefício</option>
+                                            <option value="situacao">Situação</option>
+                                            <option value="funcao">Função</option>
                                             <option value="usuario">Usuário</option>
+                                            <option value="vaga">Vaga</option>
+                                            <option value="empregador">Empregador</option>
+                                            <option value="trabalhador">Trabalhador</option>
+                                            <option value="inscricao">Inscrição</option>
                                         </select>
                                     </div>
 
@@ -60,13 +68,13 @@ export default function MenuPrincipal() {
                 </div>
                 <div className="central border-1" style={{ marginTop: "-30px" }}>
                     <div className="form-group col-md-12">
-                        <Link to="/nova-inscricao" className="btn col-md-12 btn-primary">
+                        <Link to="/efetuar-inscricao" className="btn col-md-12 btn-primary">
                         Realizar Inscrição
                         </Link>
                     </div>
 
                     <div className="form-group col-md-12">
-                        <Link to="/atualizar-inscricao" className="btn col-md-12 btn-primary">
+                        <Link to="/buscar-listar-inscricao" className="btn col-md-12 btn-primary">
                             Atualizar Inscrição
                         </Link>
                        
