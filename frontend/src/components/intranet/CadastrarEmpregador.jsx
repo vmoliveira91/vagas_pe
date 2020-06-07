@@ -16,7 +16,6 @@ export default function CadastrarEmpregador() {
 
     try {
       let obj = {
-        id: empregador.id,
         razao_social: razaoSocial,
         nome_fantasia: nomeFantasia,
         cpf: cnpj,

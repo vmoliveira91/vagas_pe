@@ -54,7 +54,7 @@ export default function AtualizarNivel({ nivel }) {
 
   return (
     <div>
-      <p className="border-bottom">ID - {hab.id}</p>
+      <p className="border-bottom">ID - {nivel.id}</p>
       <div className="form-row">
         <div className="form-group col-md-12">
           <input

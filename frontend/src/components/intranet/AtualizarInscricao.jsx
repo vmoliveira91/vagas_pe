@@ -24,9 +24,9 @@ export default function AtualizarInscricao({ inscricao }) {
 
         let obj = {
             id: inscricao.id,
-            trabalhador: novo_trabalhador,
-            vaga: nova_vaga,
-            situacao: nova_situacao
+            //trabalhador: novo_trabalhador,
+            //vaga: nova_vaga,
+            //situacao: nova_situacao
         };
 
         try {

@@ -16,7 +16,7 @@ export default function ListarEmpregadores() {
     let empregador = nomeFantasia;
 
     try {
-      if (trabalhador == "") empregador = "-";
+      if (empregador == "") empregador = "-";
       const response = await api.get(`/listar_empregadores/${empregador}/${ativo}`);
 
       setEmpregadores(response.data.empregadores);

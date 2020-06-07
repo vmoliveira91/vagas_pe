@@ -13,7 +13,7 @@ export default function ListarNiveis() {
     e.preventDefault();
 
     const ativo = 1;
-    let nivel = nivelDesc;
+    let nivel = habNivel;
 
     try {
       if (nivel == "") nivel = "-";
@@ -40,7 +40,7 @@ export default function ListarNiveis() {
                   type="text"
                   className="form-control"
                   placeholder="Descrição"
-                  value={nivelDesc}
+                  value={habNivel}
                   onChange={(e) => setNivelDesc(e.target.value)}
                 />
               </div>

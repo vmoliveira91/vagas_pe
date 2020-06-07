@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { useHistory} from 'react-router-dom';
+import React, { useState, useEffect } from "react";
+import { useHistory } from 'react-router-dom';
 
 import api from "../../services/api";
 
@@ -15,7 +15,7 @@ export default function AtualizarEmpregador({ empregador }) {
 
     useEffect(() => {
         if (empregador) {
-            setNovoRazaoSocial(empregador.razao_social);
+            setNovaRazaoSocial(empregador.razao_social);
             setNovoNomeFantasia(empregador.nome_fantasia);
             setNovoCnpj(empregador.cnpj);
             setNovoEndereco(empregador.endereco);
@@ -55,7 +55,7 @@ export default function AtualizarEmpregador({ empregador }) {
         e.preventDefault();
 
         let obj = {
-            id: trabalhador.id,
+            id: empregador.id,
         };
 
         try {
@@ -82,7 +82,7 @@ export default function AtualizarEmpregador({ empregador }) {
                         className="form-control"
                         placeholder="Razão Social"
                         required="required"
-                        value={razaoSocial}
+                        value={novaRazaoSocial}
                         onChange={(e) => setNovaRazaoSocial(e.target.value)}
                     />
                 </div>
@@ -93,7 +93,7 @@ export default function AtualizarEmpregador({ empregador }) {
                         className="form-control"
                         placeholder="Nome Fantasia"
                         required="required"
-                        value={nomeFantasia}
+                        value={novoNomeFantasia}
                         onChange={(e) => setNovoNomeFantasia(e.target.value)}
                     />
                 </div>
@@ -104,7 +104,7 @@ export default function AtualizarEmpregador({ empregador }) {
                         className="form-control"
                         placeholder="CNPJ"
                         required="required"
-                        value={cnpj}
+                        value={novoCnpj}
                         onChange={(e) => setNovoCnpj(e.target.value)}
                     />
                 </div>
@@ -115,7 +115,7 @@ export default function AtualizarEmpregador({ empregador }) {
                         className="form-control"
                         placeholder="Telefone"
                         required="required"
-                        value={telefone}
+                        value={novoTelefone}
                         onChange={(e) => setNovoTelefone(e.target.value)}
                     />
                 </div>
@@ -126,7 +126,7 @@ export default function AtualizarEmpregador({ empregador }) {
                         className="form-control"
                         placeholder="E-mail"
                         required="required"
-                        value={email}
+                        value={novoEmail}
                         onChange={(e) => setNovoEmail(e.target.value)}
                     />
                 </div>

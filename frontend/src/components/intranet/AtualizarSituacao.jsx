@@ -54,7 +54,7 @@ export default function AtualizarSituacao({ situacao }) {
 
   return (
     <div>
-      <p className="border-bottom">ID - {hab.id}</p>
+      <p className="border-bottom">ID - {situacao.id}</p>
       <div className="form-row">
         <div className="form-group col-md-12">
           <input

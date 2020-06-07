@@ -9,8 +9,10 @@ export default function AtualizarFuncao({ funcao }) {
     const history = useHistory();
 
     useEffect(() => {
-        if (funcao)
-            setNovaDesc(funcao.desc);
+        if (funcao) {
+            setNovaSigla(novaSigla);
+            setNovoNome(novoNome);
+        }
     }, [funcao]);
 
     async function handleAtualizarFuncao(e) {
@@ -18,8 +20,8 @@ export default function AtualizarFuncao({ funcao }) {
 
         let obj = {
             id: funcao.id,
-            sigla: nova_sigla,
-            nome: novo_nome,
+            sigla: novaSigla,
+            nome: novoNome,
         };
 
         try {

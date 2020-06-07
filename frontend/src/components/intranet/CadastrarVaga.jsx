@@ -1,5 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
+import AddBeneficio from './AddBeneficio';
+import AddHabilidade from "./AddHabilidade";
+import AddExperiencia from './AddExperiencia';
 import api from '../../services/api';
 
 export default function CadastrarVaga() {
@@ -64,7 +67,7 @@ export default function CadastrarVaga() {
     }
 
     function handleRemoveBeneficio(beneficio_id) {
-        seBbeneficios(beneficios => beneficios.filter((beneficio) => beneficio.beneficio_id != beneficio_id));
+        setBeneficios(beneficios => beneficios.filter((beneficio) => beneficio.beneficio_id != beneficio_id));
     }
 
     function handleAddExperiencia(novaExperiencia) {

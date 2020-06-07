@@ -54,7 +54,7 @@ export default function AtualizarBeneficio({ beneficio }) {
 
   return (
     <div>
-      <p className="border-bottom">ID - {hab.id}</p>
+      <p className="border-bottom">ID - {beneficio.id}</p>
       <div className="form-row">
         <div className="form-group col-md-12">
           <input

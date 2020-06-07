@@ -117,11 +117,11 @@ export default function AtualizarVaga({ vaga }) {
     }
 
     function handleAddBeneficio(novoBeneficio) {
-        setBeneficios(beneficios => [...beneficios, novoBeneficio]);
+        setNovosBeneficios(beneficios => [...beneficios, novoBeneficio]);
     }
 
     function handleRemoveBeneficio(beneficio_id) {
-        seBbeneficios(beneficios => beneficios.filter((beneficio) => beneficio.beneficio_id != beneficio_id));
+        setNovosBeneficios(beneficios => beneficios.filter((beneficio) => beneficio.beneficio_id != beneficio_id));
     }
 
     function handleAddExperiencia(novaExperiencia) {

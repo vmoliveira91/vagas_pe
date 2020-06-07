@@ -40,7 +40,7 @@ export default function ListarBeneficios() {
                   type="text"
                   className="form-control"
                   placeholder="Descrição"
-                  value={habDesc}
+                  value={benDesc}
                   onChange={(e) => setBenDesc(e.target.value)}
                 />
               </div>
