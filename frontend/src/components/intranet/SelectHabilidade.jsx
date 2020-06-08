@@ -45,7 +45,7 @@ export default function SelectHabilidade({ submitHandler }) {
     <div className="row col-md-12">
       <form onSubmit={handleSubmit}>
         <div className="form-row">
-          <p className="form-group mt-5 col-md-12" style={{ fontWeight: "bold", fontSize: "12pt"}}>Selecionar Experiência</p>
+          <p className="form-group mt-5 col-md-12" style={{ fontWeight: "bold", fontSize: "12pt"}}>Selecionar Habilidade</p>
 
           <div className="form-group col-md-6">
             <select className="form-control" ref={(select) => (_habilidade = select)}>

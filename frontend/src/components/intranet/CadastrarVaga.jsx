@@ -87,74 +87,78 @@ export default function CadastrarVaga() {
     }
 
     return (
-        <div className="central">
-            <div className="d-flex justify-content-center h-100">
-                <div>
-                    <form onSubmit={handleCadastrarVaga}>
-                        <div className="form-row">
-                            <h2 className="form-group col-lg-12">Cadastro de Vaga</h2>
-
-                            <div className="form-group col-lg-12">
-                                <input
-                                    type="text"
-                                    className="form-control"
-                                    placeholder="Descrição"
-                                    required="required"
-                                    value={descricao}
-                                    onChange={(e) => setDescricao(e.target.value)}
-                                />
-                            </div>
-
-                            <div className="form-group col-lg-12">
-                                <input
-                                    type="text"
-                                    className="form-control"
-                                    placeholder="Salário"
-                                    required="required"
-                                    value={salario}
-                                    onChange={(e) => setSalario(e.target.value)}
-                                />
-                            </div>
-
-                            <div className="form-group col-lg-12">
-                                <select className="form-control" onChange={(e) => setFuncao(e.target.value)}>
-                                    {funcoes.map((funcao) => {
-                                        return <option value={funcao.id}>{funcao.nome}</option>
-                                    })}
-                                </select>
-                            </div>
-
-                            <div className="form-group col-lg-12">
-                                <select className="form-control" onChange={(e) => setEmpregador(e.target.value)}>
-                                    {empregadores.map((empregador) => {
-                                        return <option value={empregador.id}>{empregador.nomeFantasia}</option>
-                                    })}
-                                </select>
-                            </div>
-
-                            <div className="form-group col-lg-12">
-                                <button
-                                    type="submit"
-                                    className="btn btn-primary btn-block"
-                                    id="btnCadastrarVaga"
-                                >
-                                    Cadastrar
-                                </button>
-                            </div>
-                        </div>
-                    </form>
-
+        <div>
+            <div className="justify-content-center align-items-center p-5 ">
+                <div className="d-flex justify-content-center h-100">
                     <div className="row">
-                        <div className="col-lg-4">
-                            <AddBeneficio beneficios={beneficios} onAdd={handleAddBeneficio} onRemove={handleRemoveBeneficio} />
+                        <div className="row col-md-4">
+                            <form onSubmit={handleCadastrarVaga}>
+                                <div className="form-row">
+                                    <h2 className="form-group col-lg-12">Cadastro de Vaga</h2>
+
+                                    <div className="form-group col-lg-12">
+                                        <input
+                                            type="text"
+                                            className="form-control"
+                                            placeholder="Descrição"
+                                            required="required"
+                                            value={descricao}
+                                            onChange={(e) => setDescricao(e.target.value)}
+                                        />
+                                    </div>
+
+                                    <div className="form-group col-lg-12">
+                                        <input
+                                            type="text"
+                                            className="form-control"
+                                            placeholder="Salário"
+                                            required="required"
+                                            value={salario}
+                                            onChange={(e) => setSalario(e.target.value)}
+                                        />
+                                    </div>
+
+                                    <div className="form-group col-lg-12">
+                                        <select className="form-control" onChange={(e) => setFuncao(e.target.value)}>
+                                            {funcoes.map((funcao) => {
+                                                return <option value={funcao.id}>{funcao.nome}</option>
+                                            })}
+                                        </select>
+                                    </div>
+
+                                    <div className="form-group col-lg-12">
+                                        <select className="form-control" onChange={(e) => setEmpregador(e.target.value)}>
+                                            {empregadores.map((empregador) => {
+                                                return <option value={empregador.id}>{empregador.nomeFantasia}</option>
+                                            })}
+                                        </select>
+                                    </div>
+
+                                    <div className="form-group col-lg-12">
+                                        <button
+                                            type="submit"
+                                            className="btn btn-primary btn-block"
+                                            id="btnCadastrarVaga"
+                                        >
+                                            Cadastrar
+                                </button>
+                                    </div>
+                                </div>
+                            </form>
                         </div>
 
-                        <div className="col-md-4">
-                            <AddExperiencia experiencias={experiencias} onAdd={handleAddExperiencia} onRemove={handleRemoveExperiencia} />
-                        </div>
+                        <div className="row col-md-8">
+                            <div className="col-md">
+                                <AddExperiencia experiencias={experiencias} onAdd={handleAddExperiencia} onRemove={handleRemoveExperiencia} />
+                            </div>
 
-                        <div className="col-md-4">
-                            <AddHabilidade habilidades={habilidades} onAdd={handleAddHabilidade} onRemove={handleRemoveHabilidade} />
+                            <div className="col-md">
+                                <AddHabilidade habilidades={habilidades} onAdd={handleAddHabilidade} onRemove={handleRemoveHabilidade} />
+                            </div>
+
+                            <div className="col-md">
+                                <AddBeneficio beneficios={beneficios} onAdd={handleAddBeneficio} onRemove={handleRemoveBeneficio} />
+                            </div>
                         </div>
                     </div>
                 </div>
