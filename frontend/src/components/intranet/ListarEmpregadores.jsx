@@ -69,7 +69,7 @@ export default function ListarEmpregadores() {
                         return (
                           <tr key={index}>
                             <th scope="row">{empregador.id}</th>
-                            <td>{empregador.nome_fantasia}</td>
+                            <td>{empregador.nomeFantasia}</td>
                             <td>{empregador.cnpj}</td>
                             <td>
                               <div>
@@ -79,8 +79,8 @@ export default function ListarEmpregadores() {
                                   onClick={() =>
                                     setObj({
                                       id: empregador.id,
-                                      razaoSocial: empregador.razao_social,
-                                      nomeFantasia: empregador.nome_fantasia,
+                                      razaoSocial: empregador.razaoSocial,
+                                      nomeFantasia: empregador.nomeFantasia,
                                       cnpj: empregador.cnpj,
                                       endereco: empregador.endereco,
                                       telefone: empregador.telefone,

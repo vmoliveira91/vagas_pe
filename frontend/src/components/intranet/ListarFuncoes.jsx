@@ -40,16 +40,6 @@ export default function ListarFuncoes() {
                                 <input
                                     type="text"
                                     className="form-control"
-                                    placeholder="Sigla"
-                                    value={sigla}
-                                    onChange={(e) => setSigla(e.target.value)}
-                                />
-                            </div>
-
-                            <div className="form-group col-md-7">
-                                <input
-                                    type="text"
-                                    className="form-control"
                                     placeholder="Nome"
                                     value={nome}
                                     onChange={(e) => setNome(e.target.value)}
@@ -82,7 +72,8 @@ export default function ListarFuncoes() {
                                                 return (
                                                     <tr key={index}>
                                                         <th scope="row">{funcao.id}</th>
-                                                        <td>{funcao.descricao}</td>
+                                                        <td>{funcao.sigla}</td>
+                                                        <td>{funcao.nome}</td>
                                                         <td>
                                                             <button
                                                                 type="button"

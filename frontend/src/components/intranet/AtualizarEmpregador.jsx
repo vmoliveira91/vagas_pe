@@ -15,8 +15,8 @@ export default function AtualizarEmpregador({ empregador }) {
 
     useEffect(() => {
         if (empregador) {
-            setNovaRazaoSocial(empregador.razao_social);
-            setNovoNomeFantasia(empregador.nome_fantasia);
+            setNovaRazaoSocial(empregador.razaoSocial);
+            setNovoNomeFantasia(empregador.nomeFantasia);
             setNovoCnpj(empregador.cnpj);
             setNovoEndereco(empregador.endereco);
             setNovoTelefone(empregador.telefone);

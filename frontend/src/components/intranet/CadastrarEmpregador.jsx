@@ -16,9 +16,9 @@ export default function CadastrarEmpregador() {
 
     try {
       let obj = {
-        razao_social: razaoSocial,
-        nome_fantasia: nomeFantasia,
-        cpf: cnpj,
+        razaoSocial: razaoSocial,
+        nomeFantasia: nomeFantasia,
+        cnpj: cnpj,
         endereco: endereco,
         telefone: telefone,
         email: email,

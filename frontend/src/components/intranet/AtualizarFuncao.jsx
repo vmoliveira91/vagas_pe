@@ -10,8 +10,8 @@ export default function AtualizarFuncao({ funcao }) {
 
     useEffect(() => {
         if (funcao) {
-            setNovaSigla(novaSigla);
-            setNovoNome(novoNome);
+            setNovaSigla(funcao.sigla);
+            setNovoNome(funcao.nome);
         }
     }, [funcao]);
 
