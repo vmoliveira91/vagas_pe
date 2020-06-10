@@ -19,7 +19,7 @@ export default function CadastrarExperiencia() {
 
       alert("Experiência cadastrada com sucesso.");
 
-      history.push('/intranet');
+      history.push('/menu');
     } catch (error) {
       alert(error);
     }

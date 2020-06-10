@@ -21,7 +21,7 @@ export default function CadastrarFuncao() {
 
             alert("Função cadastrada com sucesso.");
 
-            history.push('/intranet');
+            history.push('/menu');
         } catch (error) {
             alert(error);
         }

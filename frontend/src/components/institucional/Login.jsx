@@ -23,9 +23,10 @@ export default function Login() {
       const response = await api.post("/logar_usuario", obj);
 
       localStorage.setItem("loginTipo", response.data.tipo);
+      localStorage.setItem("token", response.data.token);
 
       if (response.data.tipo != -1) {
-        history.push("/intranet");
+        history.push("/menu");
       } else {
         alert("Dados inválidos");
       }

@@ -70,7 +70,7 @@ export default function AtualizarVaga({ vaga }) {
 
             alert("Vaga atualizada com sucesso!");
 
-            history.push('/intranet');
+            history.push('/menu');
         } catch (error) {
             alert(error);
         }
@@ -105,7 +105,7 @@ export default function AtualizarVaga({ vaga }) {
             else
                 alert("Vaga desativada com sucesso!");
 
-            history.push('/intranet');
+            history.push('/menu');
         } catch (error) {
             alert(error);
         }

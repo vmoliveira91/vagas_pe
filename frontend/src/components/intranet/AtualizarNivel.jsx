@@ -25,7 +25,7 @@ export default function AtualizarNivel({ nivel }) {
 
       alert("Nível atualizado com sucesso!");
 
-      history.push('/intranet');
+      history.push('/menu');
     } catch (error) {
       alert(error);
     }
@@ -46,7 +46,7 @@ export default function AtualizarNivel({ nivel }) {
       else
         alert("Nível desativado com sucesso!");
       
-      history.push('/intranet');
+      history.push('/menu');
     } catch (error) {
       alert(error);
     }

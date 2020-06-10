@@ -25,7 +25,7 @@ export default function AtualizarSituacao({ situacao }) {
 
       alert("Situação atualizado com sucesso!");
 
-      history.push('/intranet');
+      history.push('/menu');
     } catch (error) {
       alert(error);
     }
@@ -46,7 +46,7 @@ export default function AtualizarSituacao({ situacao }) {
       else
         alert("Situação desativado com sucesso!");
       
-      history.push('/intranet');
+      history.push('/menu');
     } catch (error) {
       alert(error);
     }

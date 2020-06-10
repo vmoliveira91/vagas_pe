@@ -29,7 +29,7 @@ export default function AtualizarFuncao({ funcao }) {
 
             alert("Função atualizada com sucesso!");
 
-            history.push('/intranet');
+            history.push('/menu');
         } catch (error) {
             alert(error);
         }
@@ -50,7 +50,7 @@ export default function AtualizarFuncao({ funcao }) {
             else
                 alert("Função desativada com sucesso!");
 
-            history.push('/intranet');
+            history.push('/menu');
         } catch (error) {
             alert(error);
         }

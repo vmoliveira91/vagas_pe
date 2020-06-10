@@ -25,7 +25,7 @@ export default function AtualizarBeneficio({ beneficio }) {
 
       alert("Benefício atualizado com sucesso!");
 
-      history.push('/intranet');
+      history.push('/menu');
     } catch (error) {
       alert(error);
     }
@@ -46,7 +46,7 @@ export default function AtualizarBeneficio({ beneficio }) {
       else
         alert("Benefício desativado com sucesso!");
       
-      history.push('/intranet');
+      history.push('/menu');
     } catch (error) {
       alert(error);
     }

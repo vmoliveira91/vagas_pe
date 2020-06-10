@@ -1,10 +1,13 @@
 const connection = require('../database/Connection');
+const jwt = require('jsonwebtoken');
+const bcrypt = require('bcrypt');
 
 module.exports = {
     async cadastrar_usuario(request, response) {
-        const { login, nome_usuario, senha, tipo } = request.body;
+        const { login, nome_usuario, tipo } = request.body;
         const ativo = 1;
-
+        
+        const senha = bcrypt.hashSync(request.body.senha,10)
         try {
             const [ id ] = await connection('usuario').insert({
                 login,
@@ -21,9 +24,10 @@ module.exports = {
         }
     },
 
-    async atualizar_usuario(request, response) {
-        const { id, login, nome_usuario, senha, tipo, ativo } = request.body;
-
+    async atualizar_usuario(request, response)  {
+        const { id, login, nome_usuario, tipo, ativo } = request.body;
+        const senha = bcrypt.hashSync(request.body.senha,10)
+        
         try {
             await connection('usuario').update({
                 id,
@@ -74,21 +78,37 @@ module.exports = {
 
     async logar_usuario(request, response) {
         const { login, senha } = request.body;
-
+        
+        
         try {
-            const [ tipo_resposta ]  = await connection('usuario')
-                .select('tipo')
+            const [ usuario ]  = await connection('usuario')
+                .select('*')
                 .where('login', '=', login)
-                .andWhere('senha', '=', senha);
+            if(bcrypt.compareSync(senha,usuario.senha)){
+                if(usuario.tipo != -1) {
+                    const tipo = usuario.tipo;
+                    jwt.sign({usuario: usuario},'secretkey', (err, token) => {
+                        if(err){
+                            response.json({
+                                message: "Failed to authenticate"
+                            })
+                        } else {
+                        response.json({
+                            tipo: tipo,
+                            token:token
+                        })
+                    }
+                })
+        } else {
+             return response.json({ tipo: -1})
+        }    
+    } else {
+        return response.status(403).json({
+            message: 'Forbidden'
+        });
+    }
             
-            if(tipo_resposta != null) {
-                const { tipo } = tipo_resposta;
-
-                return response.json({ tipo });
-            } else {
-                return response.json({ tipo: -1 });
-            }           
-        } catch(error) {
+    } catch(error) {
             console.log(error);
         }
     },
@@ -134,4 +154,7 @@ module.exports = {
             console.log(error);
         }
     }
+
 }
+
+ 
