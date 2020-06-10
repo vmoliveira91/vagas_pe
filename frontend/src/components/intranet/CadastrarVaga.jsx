@@ -24,8 +24,8 @@ export default function CadastrarVaga() {
             let obj = {
                 descricao: descricao,
                 salario: salario,
-                empregador: empregador,
-                funcao: funcao,
+                empregador_id: empregador,
+                funcao_id: funcao,
                 beneficios: beneficios,
                 experiencias: experiencias,
                 habilidades: habilidades,

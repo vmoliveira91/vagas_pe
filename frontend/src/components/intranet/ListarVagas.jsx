@@ -73,7 +73,7 @@ export default function ListarVagas() {
                             <th scope="row">{vaga.id}</th>
                             <td>{vaga.descricao}</td>
                             <td>{vaga.salario}</td>
-                            <td>{vaga.funcao.descricao}</td>
+                            <td>{vaga.funcao.nome}</td>
                             <td>{vaga.empregador.nomeFantasia}</td>
                             <td>
                               <div>

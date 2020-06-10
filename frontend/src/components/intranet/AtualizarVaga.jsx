@@ -20,6 +20,7 @@ export default function AtualizarVaga({ vaga }) {
 
     useEffect(() => {
         if (vaga) {
+            get_empregadores_funcoes();
             setNovaDescricao(vaga.descricao);
             setNovoSalario(vaga.salario);
             setNovoEmpregador(vaga.empregador);
@@ -79,21 +80,15 @@ export default function AtualizarVaga({ vaga }) {
         let ativo = 1;
 
         try {
-            let response = await api.get(`/listar_empregadores/${vaga.empregador.nomeFantasia}/${ativo}`);
-            response.data.empregadores.unshift({ id: 0, nomeFantasia: 'Empregador' });
+            let response = await api.get(`/listar_empregadores/${'-'}/${ativo}`);
             setEmpregadores(response.data.empregadores);
 
-            response = await api.get(`/listar_funcoes/${vaga.funcao.nome}/${ativo}`);
-            response.data.funcoes.unshift({ id: 0, nome: 'Função' });
+            response = await api.get(`/listar_funcoes/${'-'}/${ativo}`);
             setFuncoes(response.data.funcoes);
         } catch (error) {
             alert(error);
         }
     }
-
-    useEffect(() => {
-        get_empregadores_funcoes();
-    }, []);
 
     async function handleDesativar(e) {
         e.preventDefault();

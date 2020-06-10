@@ -17,9 +17,9 @@ export default function ListarInscricoes() {
 
     try {
       if (inscricao == "") inscricao = "-";
-      const response = await api.get(`/listar_inscricoes/${inscricao}/${ativo}`);
+      const response = await api.get(`/listar_inscricoes/${ativo}`);
 
-      setInscricoes(response.data.vagas);
+      setInscricoes(response.data.inscricoes);
     } catch (error) {
       alert(error);
     }
@@ -74,7 +74,7 @@ export default function ListarInscricoes() {
                             <td>{inscricao.data_inscricao}</td>
                             <td>{inscricao.trabalhador.nome}</td>
                             <td>{inscricao.vaga.descricao}</td>
-                            <td>{inscricao.situacao.descricao}</td>
+                            <td>{inscricao.descricao}</td>
                             <td>
                               <div>
                                 <button

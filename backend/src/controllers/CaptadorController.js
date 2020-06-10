@@ -265,7 +265,8 @@ module.exports = {
             // Verifica se há beneficios, se tiver adiciona
             if(beneficios != null) {
                 for (let i= 0; i< beneficios.length; i++){
-                    const { beneficio_id, valor } = beneficios[i];
+                    const { beneficio_id } = beneficios[i];
+                    var valor = '0';
 
                     await connection('vaga_beneficio').insert({
                         beneficio_id,
@@ -335,8 +336,9 @@ module.exports = {
             // Insere os beneficios atualizados
             if(beneficios != null) {
                 for(let i = 0; i < beneficios.length; i++) {
-                    const { beneficio_id, valor } = beneficios[i];
-    
+                    const { beneficio_id } = beneficios[i];
+                    let valor = 0;
+                    
                     await connection('vaga_beneficio').insert({
                         beneficio_id,
                         valor,
@@ -382,6 +384,8 @@ module.exports = {
                     });
                 }
             }
+
+            return response.json({ id });
 
         } catch(error) {
             console.log(error);

@@ -573,28 +573,40 @@ module.exports = {
         if(ativo){
             inscricoes = await connection('inscricao AS i')
             .select('i.id as iid', 'i.data_inscricao as idata_inscricao', 'i.vaga_id as ivaga_id', 'i.trabalhador_id as itrabalhador_id',
-            'i.situacao_id as isituacao_id', 's.descricao as sdescricao','i.ativo as iativo')
+            'i.situacao_id as isituacao_id', 's.descricao as sdescricao','i.ativo as iativo', 't.nome as tnome', 'v.descricao as vdescricao')
             .innerJoin('situacao as s', 'i.situacao_id','s.id')
+            .innerJoin('vaga as v', 'i.vaga_id', 'v.id')
+            .innerJoin('trabalhador as t', 'i.trabalhador_id', 't.id')
             .where('i.ativo','=',1)
         } else {
             inscricoes = await connection('inscricao AS i')
             .select('i.id as iid', 'i.data_inscricao as idata_inscricao', 'i.vaga_id as ivaga_id', 'i.trabalhador_id as trabalhador_id',
-            'i.situacao_id as isituacao_id', 's.descricao as sdescricao','i.ativo as iativo')
+            'i.situacao_id as isituacao_id', 's.descricao as sdescricao','i.ativo as iativo', 't.nome as tnome', 'v.descricao as vdescricao')
             .innerJoin('situacao as s', 'i.situacao_id','s.id')
+            .innerJoin('situacao as s', 'i.situacao_id','s.id')
+            .innerJoin('vaga as v', 'i.vaga_id', 'v.id')
         }
 
         for(let i =0; i <inscricoes.length; i++){
             let inscricao = {
                 id: inscricoes[i].iid,
                 data_inscricao: inscricoes[i].idata_inscricao,
-                vaga_id: inscricoes[i].ivaga_id,
-                trabalhador_id: inscricoes[i].itrabalhador_id,
+                //vaga_id: inscricoes[i].ivaga_id,
+                vaga: {
+                    id: inscricoes[i].ivaga_id,
+                    descricao: inscricoes[i].vdescricao
+                },
+                ///trabalhador_id: inscricoes[i].itrabalhador_id,
+                trabalhador: {
+                    id: inscricoes[i].itrabalhador_id,
+                    nome: inscricoes[i].tnome
+                },
                 situacao_id: inscricoes[i].isituacao_id,
                 descricao: inscricoes[i].sdescricao
             }
 
             inscricoes[i]= inscricao;
-        }
+        }//console.log(inscricoes);
 
         return response.json ({ inscricoes })
     

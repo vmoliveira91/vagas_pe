@@ -403,15 +403,15 @@ module.exports = {
                 if(trabalhador.experiencias.length >= vaga.experiencias.length && trabalhador.habilidades.length >= vaga.habilidades.length) {
                     for(let i = 0; i < vaga.experiencias.length; i++) {
                         if(!trabalhador.experiencias.some(experiencia => (experiencia.experiencia_id == vaga.experiencias[i].experiencia_id && experiencia.tempo_id == vaga.experiencias[i].tempo_id)))
-                            return;
+                            return response.json({ message: "Teste"});
                     }
                     for(let i = 0; i < vaga.habilidades.length; i++) {
                         if(!trabalhador.habilidades.some(habilidade => (habilidade.habilidade_id == vaga.habilidades[i].habilidade_id && habilidade.nivel_id == vaga.habilidades[i].nivel_id)))
-                            return;
+                            return response.json({ message: "Teste"});
                     }
                 }
             } else {
-                return;
+                return response.json({ message: "Teste"});
             }
 
             const [ id ] = await connection('inscricao').insert({

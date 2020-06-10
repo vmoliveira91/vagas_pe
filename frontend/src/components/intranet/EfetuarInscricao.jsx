@@ -19,11 +19,13 @@ export default function EfetuarInscricao() {
         };
 
         try {
-            await api.post("/efetuar_inscricao", obj);
+            const { id } = await api.post("/efetuar_inscricao", obj);
 
-            alert("Inscrição efetuada com sucesso.");
-
-            history.push('/intranet');
+            if(id != undefined) {
+                alert("Inscrição efetuada com sucesso.");
+                history.push('/intranet');
+            } else
+                alert("Inscrição não efetuada.");            
         } catch (error) {
             alert(error);
         }
