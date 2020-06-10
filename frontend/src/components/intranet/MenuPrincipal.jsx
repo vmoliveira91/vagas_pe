@@ -11,14 +11,15 @@ export default function MenuPrincipal() {
                 <div className="central border-1">
                     <div className="d-flex justify-content-center h-100">
                         <div>
-                        <div className="form-group col-md-4">
-                        <button type="button" 
-                        class="btn btn-danger" 
-                        onClick={() => localStorage.removeItem('token') & localStorage.removeItem('loginTipo')} 
-                        >Logout</button>
-
-                                       
-                                    </div>
+                        <div className="form-group">
+                            <Link
+                                className="btn btn-danger"
+                                to={"/login"}
+                                onClick={() => localStorage.removeItem('token') & localStorage.removeItem('loginTipo')}
+                            >
+                                Logout
+                            </Link>
+                        </div>
                             <form>
                                 <div className="form-row">
                                     <img
