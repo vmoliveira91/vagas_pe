@@ -25,7 +25,7 @@ export default function AtualizarTempo({ tempo }) {
 
       alert("Tempo atualizado com sucesso!");
 
-      history.push('/intranet');
+      history.push('/menu');
     } catch (error) {
       alert(error);
     }
@@ -46,7 +46,7 @@ export default function AtualizarTempo({ tempo }) {
       else
         alert("Tempo desativado com sucesso!");
       
-      history.push('/intranet');
+      history.push('/menu');
     } catch (error) {
       alert(error);
     }

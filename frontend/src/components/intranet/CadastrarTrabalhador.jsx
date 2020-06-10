@@ -40,7 +40,7 @@ export default function Trabalhador() {
 
       alert('Trabalhador cadastrado com sucesso!');
 
-      history.push('/intranet');
+      history.push('/menu');
 
     } catch(error) {
       alert(error);

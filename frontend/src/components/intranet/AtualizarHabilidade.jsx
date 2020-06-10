@@ -25,7 +25,7 @@ export default function AtualizarHabilidade({ hab }) {
 
       alert("Habilidade atualizada com sucesso!");
 
-      history.push('/intranet');
+      history.push('/menu');
     } catch (error) {
       alert(error);
     }
@@ -46,7 +46,7 @@ export default function AtualizarHabilidade({ hab }) {
       else
         alert("Habilidade desativada com sucesso!");
       
-      history.push('/intranet');
+      history.push('/menu');
     } catch (error) {
       alert(error);
     }

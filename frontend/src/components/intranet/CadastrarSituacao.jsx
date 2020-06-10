@@ -19,7 +19,7 @@ export default function CadastrarSituacao() {
 
       alert("Situação cadastrado com sucesso.");
 
-      history.push('/intranet');
+      history.push('/menu');
     } catch (error) {
       alert(error);
     }

@@ -25,7 +25,7 @@ export default function AtualizarExperiencia({ exp }) {
 
       alert("Experiência atualizada com sucesso!");
 
-      history.push('/intranet');
+      history.push('/menu');
     } catch (error) {
       alert(error);
     }
@@ -46,7 +46,7 @@ export default function AtualizarExperiencia({ exp }) {
         else
           alert("Experiência desativada com sucesso!");
 
-        history.push('/intranet');
+        history.push('/menu');
       } catch (error) {
         alert(error);
       }

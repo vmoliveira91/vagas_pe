@@ -45,7 +45,7 @@ export default function AtualizarEmpregador({ empregador }) {
 
             alert("Empregador atualizado com sucesso!");
 
-            history.push('/intranet');
+            history.push('/menu');
         } catch (error) {
             alert(error);
         }
@@ -66,7 +66,7 @@ export default function AtualizarEmpregador({ empregador }) {
             else
                 alert("Empregador desativado com sucesso!");
 
-            history.push('/intranet');
+            history.push('/menu');
         } catch (error) {
             alert(error);
         }

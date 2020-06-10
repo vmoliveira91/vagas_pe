@@ -19,7 +19,7 @@ export default function CadastrarHabilidade() {
 
       alert("Habilidade cadastrada com sucesso.");
 
-      history.push('/intranet');
+      history.push('/menu');
     } catch (error) {
       alert(error);
     }

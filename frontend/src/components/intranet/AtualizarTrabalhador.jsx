@@ -77,7 +77,7 @@ export default function AtualizarTrabalhador({ trabalhador }) {
 
       alert("Trabalhador atualizado com sucesso!");
 
-      history.push('/intranet');
+      history.push('/menu');
     } catch (error) {
       alert(error);
     }
@@ -98,7 +98,7 @@ export default function AtualizarTrabalhador({ trabalhador }) {
       else
         alert("Trabalhador desativado com sucesso!");
       
-      history.push('/intranet');
+      history.push('/menu');
     } catch (error) {
       alert(error);
     }

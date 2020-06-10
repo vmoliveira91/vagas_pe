@@ -32,11 +32,12 @@ export default function AtualizarUsuario({ user }) {
     };
 
     try {
+      
       await api.post("/atualizar_usuario", obj);
 
       alert("Usuário atualizado com sucesso!");
 
-      history.push('/intranet');
+      history.push('/menu');
     } catch (error) {
       alert(error);
     }
@@ -57,7 +58,7 @@ export default function AtualizarUsuario({ user }) {
       else
         alert("Usuário desativado com sucesso!");
       
-      history.push('/intranet');
+      history.push('/menu');
     } catch (error) {
       alert(error);
     }

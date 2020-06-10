@@ -34,7 +34,7 @@ export default function AtualizarInscricao({ inscricao }) {
 
             alert("Inscrição atualizada com sucesso!");
 
-            history.push('/intranet');
+            history.push('/menu');
         } catch (error) {
             alert(error);
         }
@@ -55,7 +55,7 @@ export default function AtualizarInscricao({ inscricao }) {
             else
                 alert("Inscrição desativada com sucesso!");
 
-            history.push('/intranet');
+            history.push('/menu');
         } catch (error) {
             alert(error);
         }

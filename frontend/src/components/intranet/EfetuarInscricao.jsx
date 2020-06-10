@@ -23,7 +23,7 @@ export default function EfetuarInscricao() {
 
             alert("Inscrição efetuada com sucesso.");
 
-            history.push('/intranet');
+            history.push('/menu');
         } catch (error) {
             alert(error);
         }

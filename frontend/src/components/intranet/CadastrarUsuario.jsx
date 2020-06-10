@@ -24,7 +24,7 @@ export default function CadastrarUsuario() {
 
       alert('Usuário cadastrado com sucesso!');
 
-      history.push('/intranet');
+      history.push('/menu');
     } catch(error) {
       alert(error);
     }
